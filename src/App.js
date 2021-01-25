@@ -1,31 +1,21 @@
-import { useState } from "react";
 import "./App.css";
-import { Button } from "./components/Button";
 import { ThemeProvider } from "styled-components";
 import {
   darkTheme,
   GlobalStyles,
   lightTheme,
 } from "./components/styledComponents/themes";
+import Home from "./components/pages/Home";
+import { useStateValue } from "./components/StateProvider";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
-
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  const [{ theme }] = useStateValue();
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <div className="App">
-        <h1>Hello World</h1>
-        <Button
-          onSwitch={() => {
-            themeToggler();
-          }}>
-          Switch Theme
-        </Button>
+        <Home />
       </div>
     </ThemeProvider>
   );
