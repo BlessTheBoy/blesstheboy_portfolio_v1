@@ -11,8 +11,9 @@ export const darkTheme = {
 };
 
 export const GlobalStyles = createGlobalStyle`
- body{
-     background-color: ${(props) => props.theme.body};
-     color: ${(props) => props.theme.fontColor};
- }
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+    }
 `;

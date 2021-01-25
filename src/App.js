@@ -5,8 +5,8 @@ import {
   GlobalStyles,
   lightTheme,
 } from "./components/styledComponents/themes";
-import Home from "./components/pages/Home";
 import { useStateValue } from "./components/StateProvider";
+import { LandingPage } from "./components/pages/LandingPage";
 
 function App() {
   const [{ theme }] = useStateValue();
@@ -15,7 +15,7 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <div className="App">
-        <Home />
+        <LandingPage />
       </div>
     </ThemeProvider>
   );

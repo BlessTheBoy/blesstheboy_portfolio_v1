@@ -1,0 +1,12 @@
+.homeNav {
+  display: flex;
+  list-style: none;
+
+  li {
+    margin-left: 2rem;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
