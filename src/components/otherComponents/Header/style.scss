@@ -1,7 +1,8 @@
 .header {
-  padding: 2rem;
+  padding: 1.5rem 4rem;
   &__container {
     margin: 0 auto;
+    max-width: 1400px;
     display: flex;
     justify-content: space-between;
     align-items: center;

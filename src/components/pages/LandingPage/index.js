@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../../otherComponents/Button";
 import { Header } from "../../otherComponents/Header";
 import { useStateValue } from "../../StateProvider";
 
@@ -22,12 +21,6 @@ export const LandingPage = () => {
   return (
     <StyledHome>
       <Header />
-      <Button
-        onSwitch={() => {
-          themeToggler();
-        }}>
-        Switch Theme
-      </Button>
     </StyledHome>
   );
 };

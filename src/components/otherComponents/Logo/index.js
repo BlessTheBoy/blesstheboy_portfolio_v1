@@ -3,6 +3,8 @@ import styled from "styled-components";
 const StyledLogo = styled.div`
   & svg {
     fill: ${(props) => props.theme.fontColor};
+    object-fit: contain;
+    width 120px;
   }
 `;
 
