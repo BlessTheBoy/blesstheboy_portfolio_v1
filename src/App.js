@@ -1,4 +1,3 @@
-import "./App.css";
 import { ThemeProvider } from "styled-components";
 import {
   darkTheme,

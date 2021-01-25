@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledLogo = styled.div`
+    cursor: pointer;
   & svg {
     fill: ${(props) => props.theme.fontColor};
     object-fit: contain;
