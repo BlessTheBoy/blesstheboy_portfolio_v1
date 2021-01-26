@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 const slideOut = keyframes`
 0% {
     display: flex;
-    transform: translateX(-100%);
+    transform: translateX(-60%);
     opacity: 0;
 }
 100% {
@@ -18,6 +18,7 @@ const StyledHomeSocials = styled.ul`
   align-items: center;
   padding: 1rem 0;
   padding-left: 0.3rem;
+  color: ${(props) => props.theme.fontColor};
 
   & li {
     margin-right: 2.5rem;
@@ -34,25 +35,28 @@ const StyledHomeSocials = styled.ul`
   & li a {
     display: flex;
     align-items: center;
+    color: inherit;
   }
 
   & li a > svg {
     object-fit: contain;
     width: 22px;
     margin-right: 0.5rem;
+    fill: ${(props) => props.theme.fontColor};
   }
 
   & li a p {
     display: none;
     align-items: center;
-    transform: translateX(-100%);
-    opacity: 0;
+    transform: translateX(-60%);
+    opacity: 0.6;
   }
 
   & li a p svg {
     object-fit: contain;
     width: 12px;
     margin-left: 5px;
+    fill: ${(props) => props.theme.fontColor};
   }
 `;
 
