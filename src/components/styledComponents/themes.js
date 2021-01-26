@@ -20,4 +20,12 @@ export const GlobalStyles = createGlobalStyle`
      padding: 0;
      box-sizing: border-box;
     }
+
+  ul{
+    list-style: none;
+  }
+  a{
+    text-decoration: none;
+    color: initial;
+  }
 `;

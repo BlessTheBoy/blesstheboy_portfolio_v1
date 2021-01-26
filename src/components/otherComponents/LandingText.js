@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HomeSocials } from "./HomeSocials";
 
 const StyledLandingText = styled.div`
   padding: 1rem;
@@ -59,6 +60,7 @@ export const LandingText = () => {
         have been working on a lot of projects and I’m ready and currently
         looking Frontend Development oppurtunities.
       </p>
+      <HomeSocials />
       <img src="images/tagbottom.png" alt="" id="tagbottom" />
     </StyledLandingText>
   );
