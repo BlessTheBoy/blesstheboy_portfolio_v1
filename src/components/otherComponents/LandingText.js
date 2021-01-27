@@ -43,7 +43,7 @@ const StyledLandingText = styled.div`
   #tagbottom {
     object-fit: contain;
     width: 50px;
-    margin-top: 3.5rem;
+    margin-top: 3rem;
   }
 `;
 
