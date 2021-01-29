@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AnimatedTitle } from "./AnimatedTitle";
 import { HomeSocials } from "./HomeSocials";
 
 const StyledLandingText = styled.div`
@@ -6,6 +7,7 @@ const StyledLandingText = styled.div`
   padding-top: .5rem
   width: fit-content;
   position: relative;
+  z-index: 30;
 
   p.landingText__intro {
     font-size: 1.2rem;
@@ -42,7 +44,7 @@ const StyledLandingText = styled.div`
   #tagbottom {
     object-fit: contain;
     width: 50px;
-    margin-top: 4rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -51,7 +53,8 @@ export const LandingText = () => {
     <StyledLandingText className="landingText">
       <img src="images/tagtop.png" alt="" id="tagtop" />
       <p className="landingText__intro">My name is Faruq, I’m a</p>
-      <h1>FRONTEND DEVELOPER</h1>
+      {/* <h1>FRONTEND DEVELOPER</h1> */}
+      <AnimatedTitle />
       <p className="landingText__description">
         from Lagos, Nigeria. I love designing and building websites and
         applications and I’m a React.js and css nerd. When I’m not outdoor,
