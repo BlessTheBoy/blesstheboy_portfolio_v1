@@ -7,6 +7,7 @@ const StyledLandingText = styled.div`
   padding-top: .5rem
   width: fit-content;
   position: relative;
+  z-index: 30;
 
   p.landingText__intro {
     font-size: 1.2rem;

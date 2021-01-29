@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { AsideImage } from "../../otherComponents/AsideImage";
 import { Header } from "../../otherComponents/Header";
 import { LandingText } from "../../otherComponents/LandingText";
 import { ScrollIcon } from "../../otherComponents/ScrollIcon";
@@ -12,6 +13,7 @@ const StyledHome = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 
   .landingContent {
     padding: 0rem 4rem 1.5rem;
@@ -19,6 +21,7 @@ const StyledHome = styled.section`
     display: flex
     align-items: center;
     justify-content: flex-start;
+    position: relative;
   }
 
   .landingContent__container {
@@ -37,6 +40,13 @@ const StyledHome = styled.section`
     z-index: 5;
     width: 30px;
   }
+  [data-id="asideImage"]{
+    position: absolute;
+    right: 4rem;
+    top: 50%;    
+    transform: translateY(-50%);
+    // z-index: 1;
+  }
 `;
 
 export const LandingPage = () => {
@@ -48,6 +58,7 @@ export const LandingPage = () => {
       <main className="landingContent">
         <div className="landingContent__container">
           <LandingText />
+          <AsideImage />
         </div>
       </main>
       <ScrollIcon />
