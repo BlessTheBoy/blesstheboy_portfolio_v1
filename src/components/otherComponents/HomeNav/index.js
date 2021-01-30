@@ -24,6 +24,12 @@ const StyledHomeNav = styled.ul`
     color: ${(props) => props.theme.accentColor};
     font-weight: 700;
   }
+
+  @media only screen and (max-width: 840px) {
+    li a {
+      font-size: 0.7rem;
+    }
+  }
 `;
 
 export const HomeNav = () => {

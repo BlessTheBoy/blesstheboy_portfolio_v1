@@ -1,5 +1,5 @@
 export const initialState = {
-  theme: "light",
+  theme: "dark",
 };
 
 export const getBasketTotal = (basket) =>

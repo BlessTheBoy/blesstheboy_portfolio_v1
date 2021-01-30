@@ -1,4 +1,4 @@
-import { gsap, Linear, Power0, TweenLite } from "gsap";
+import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { useStateValue } from "../StateProvider";
@@ -44,12 +44,12 @@ const StyledAsideImage = styled.div.attrs({ "data-id": "asideImage" })`
   & #sun-wrap {
     position: relative
     object-fit: contain;
-    width: 420px;
+    width: 100%;
     z-index: 3;
   }
   & #sun-wrap svg {
     object-fit: contain;
-    width: 420px;
+    width: 100%;
     position: relative;
     z-index: 3;
   }
