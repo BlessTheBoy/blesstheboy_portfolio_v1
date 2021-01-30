@@ -1,5 +1,6 @@
-import React from "react";
+import React, { createRef, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { gsap } from "gsap";
 import { AsideImage } from "../../otherComponents/AsideImage";
 import { Header } from "../../otherComponents/Header";
 import { LandingText } from "../../otherComponents/LandingText";
@@ -45,23 +46,45 @@ const StyledHome = styled.section`
     right: 4rem;
     top: 50%;    
     transform: translateY(-50%);
+    width: 420px;
     // z-index: 1;
+  }
+
+  @media only screen and (max-width: 880px){
+    [data-id="asideImage"]{
+      width: 320px;
+    }
+  }
+  @media only screen and (max-width: 800px){
+    .landingContent {
+      padding: 0rem 2.5rem 1.5rem;
+    }
   }
 `;
 
 export const LandingPage = () => {
   const [{ theme }, dispatch] = useStateValue();
+  const hederRef = createRef();
+  const scrollRef = createRef();
 
+  useEffect(() => {
+    console.log(hederRef.current, scrollRef.current);
+    gsap.from([hederRef.current, scrollRef.current], {
+      opacity: 0,
+      duration: 4.5,
+      delay: 3.5,
+    });
+  }, []);
   return (
     <StyledHome>
-      <Header />
+      <Header ref={hederRef} />
       <main className="landingContent">
         <div className="landingContent__container">
           <LandingText />
           <AsideImage />
         </div>
       </main>
-      <ScrollIcon />
+      <ScrollIcon ref={scrollRef} />
     </StyledHome>
   );
 };

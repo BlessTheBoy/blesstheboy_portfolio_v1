@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 
 const StyledScrollIcon = styled.div.attrs({ "data-id": "scroll" })`
@@ -11,9 +12,9 @@ const StyledScrollIcon = styled.div.attrs({ "data-id": "scroll" })`
     stroke: ${(props) => props.theme.fontColor};
   }
 `;
-export const ScrollIcon = () => {
+export const ScrollIcon = forwardRef((props, ref) => {
   return (
-    <StyledScrollIcon>
+    <StyledScrollIcon ref={ref}>
       <svg
         width="20"
         height="47"
@@ -39,4 +40,4 @@ export const ScrollIcon = () => {
       </svg>
     </StyledScrollIcon>
   );
-};
+});

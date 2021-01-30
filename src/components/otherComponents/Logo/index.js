@@ -7,6 +7,12 @@ const StyledLogo = styled.div`
     object-fit: contain;
     width 120px;
   }
+  
+  @media only screen and (max-width: 840px){
+    & svg{
+      width: 100px;
+    }
+  }
 `;
 
 export const Logo = () => {
