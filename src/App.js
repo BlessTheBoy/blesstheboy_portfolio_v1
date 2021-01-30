@@ -6,6 +6,7 @@ import {
 } from "./components/styledComponents/themes";
 import { useStateValue } from "./components/StateProvider";
 import { LandingPage } from "./components/pages/LandingPage";
+import { RecentProjects } from "./components/pages/RecentProjects";
 
 function App() {
   const [{ theme }] = useStateValue();
@@ -15,6 +16,7 @@ function App() {
       <GlobalStyles />
       <div className="App">
         <LandingPage />
+        <RecentProjects />
       </div>
     </ThemeProvider>
   );

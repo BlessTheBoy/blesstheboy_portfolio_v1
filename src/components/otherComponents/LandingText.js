@@ -32,7 +32,7 @@ const StyledLandingText = styled.div`
     font-size: 0.9rem;
     width: 60%;
     padding-left: 5px;
-    color: #5b5a5c;
+    color: ${(props) => props.theme.secFontColor};
   }
 
   h1 {

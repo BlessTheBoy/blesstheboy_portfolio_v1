@@ -11,15 +11,17 @@ const StyledScrollIcon = styled.div.attrs({ "data-id": "scroll" })`
   & svg .innerRect {
     stroke: ${(props) => props.theme.fontColor};
   }
+
+  @media only screen and (max-width: 900px) {
+    & svg {
+      width: 15px;
+    }
+  }
 `;
 export const ScrollIcon = forwardRef((props, ref) => {
   return (
     <StyledScrollIcon ref={ref}>
-      <svg
-        width="20"
-        height="47"
-        viewBox="0 0 20 47"
-        xmlns="http://www.w3.org/2000/svg">
+      <svg width="20" viewBox="0 0 20 47" xmlns="http://www.w3.org/2000/svg">
         <rect
           x="1.5"
           y="1.5"
