@@ -7,112 +7,101 @@ to {
 }
 `;
 
-function createCSS(lengthsArr) {
-  let styles = "";
-
-  for (let index = 0; index < lengthsArr.length; index++) {
-    styles += `
-    #role > path:nth-of-type(${index + 1}) {
-        stroke-dasharray: ${lengthsArr[index]};
-        stroke-dashoffset: ${lengthsArr[index]};
-    }
-       `;
-  }
-  //   console.log(lengths);
-  return css`
-    ${styles}
-  `;
-}
-
 const StyledAnimatedTitle = styled.div`
   padding: 1rem 0;
+  width: 100%;
+  position: relative;
+
+  #role {
+    width: 80%;
+  }
   #role > path {
     stroke: ${(props) => props.theme.fontColor};
   }
   #role > path:nth-of-type(${1}) {
     stroke-dasharray: ${(props) => props.lengthsArray[0]};
     stroke-dashoffset: ${(props) => props.lengthsArray[0]};
-    animation: ${lineAnim} 2.2s ease forwards;
+    animation: ${lineAnim} 3.7s ease forwards 1s;
   }
   #role > path:nth-of-type(${2}) {
     stroke-dasharray: ${(props) => props.lengthsArray[1]};
     stroke-dashoffset: ${(props) => props.lengthsArray[1]};
-    animation: ${lineAnim} 2.2s ease forwards 0.1s;
+    animation: ${lineAnim} 3.7s ease forwards 1.1s;
   }
   #role > path:nth-of-type(${3}) {
     stroke-dasharray: ${(props) => props.lengthsArray[2]};
     stroke-dashoffset: ${(props) => props.lengthsArray[2]};
-    animation: ${lineAnim} 2.2s ease forwards 0.2s;
+    animation: ${lineAnim} 3.7s ease forwards 1.2s;
   }
   #role > path:nth-of-type(${4}) {
     stroke-dasharray: ${(props) => props.lengthsArray[3]};
     stroke-dashoffset: ${(props) => props.lengthsArray[3]};
-    animation: ${lineAnim} 2.2s ease forwards 0.3s;
+    animation: ${lineAnim} 3.7s ease forwards 1.3s;
   }
   #role > path:nth-of-type(${5}) {
     stroke-dasharray: ${(props) => props.lengthsArray[4]};
     stroke-dashoffset: ${(props) => props.lengthsArray[4]};
-    animation: ${lineAnim} 2.2s ease forwards 0.4s;
+    animation: ${lineAnim} 3.7s ease forwards 1.4s;
   }
   #role > path:nth-of-type(${6}) {
     stroke-dasharray: ${(props) => props.lengthsArray[5]};
     stroke-dashoffset: ${(props) => props.lengthsArray[5]};
-    animation: ${lineAnim} 2.2s ease forwards 0.5s;
+    animation: ${lineAnim} 3.7s ease forwards 1.5s;
   }
   #role > path:nth-of-type(${7}) {
     stroke-dasharray: ${(props) => props.lengthsArray[6]};
     stroke-dashoffset: ${(props) => props.lengthsArray[6]};
-    animation: ${lineAnim} 2.2s ease forwards 0.6s;
+    animation: ${lineAnim} 3.7s ease forwards 1.6s;
   }
   #role > path:nth-of-type(${8}) {
     stroke-dasharray: ${(props) => props.lengthsArray[7]};
     stroke-dashoffset: ${(props) => props.lengthsArray[7]};
-    animation: ${lineAnim} 2.2s ease forwards 0.7s;
+    animation: ${lineAnim} 3.7s ease forwards 1.7s;
   }
   #role > path:nth-of-type(${9}) {
     stroke-dasharray: ${(props) => props.lengthsArray[8]};
     stroke-dashoffset: ${(props) => props.lengthsArray[8]};
-    animation: ${lineAnim} 2.2s ease forwards 0.8s;
+    animation: ${lineAnim} 3.7s ease forwards 1.8s;
   }
   #role > path:nth-of-type(${10}) {
     stroke-dasharray: ${(props) => props.lengthsArray[9]};
     stroke-dashoffset: ${(props) => props.lengthsArray[9]};
-    animation: ${lineAnim} 2.2s ease forwards 0.9s;
+    animation: ${lineAnim} 3.7s ease forwards 1.9s;
   }
   #role > path:nth-of-type(${11}) {
     stroke-dasharray: ${(props) => props.lengthsArray[10]};
     stroke-dashoffset: ${(props) => props.lengthsArray[10]};
-    animation: ${lineAnim} 2.2s ease forwards 1s;
+    animation: ${lineAnim} 3.7s ease forwards 2s;
   }
   #role > path:nth-of-type(${12}) {
     stroke-dasharray: ${(props) => props.lengthsArray[11]};
     stroke-dashoffset: ${(props) => props.lengthsArray[11]};
-    animation: ${lineAnim} 2.2s ease forwards 1.1s;
+    animation: ${lineAnim} 3.7s ease forwards 2.1s;
   }
   #role > path:nth-of-type(${13}) {
     stroke-dasharray: ${(props) => props.lengthsArray[12]};
     stroke-dashoffset: ${(props) => props.lengthsArray[12]};
-    animation: ${lineAnim} 2.2s ease forwards 1.2s;
+    animation: ${lineAnim} 3.7s ease forwards 2.2s;
   }
   #role > path:nth-of-type(${14}) {
     stroke-dasharray: ${(props) => props.lengthsArray[13]};
     stroke-dashoffset: ${(props) => props.lengthsArray[13]};
-    animation: ${lineAnim} 2.2s ease forwards 1.3s;
+    animation: ${lineAnim} 3.7s ease forwards 2.3s;
   }
   #role > path:nth-of-type(${15}) {
     stroke-dasharray: ${(props) => props.lengthsArray[14]};
     stroke-dashoffset: ${(props) => props.lengthsArray[14]};
-    animation: ${lineAnim} 2.2s ease forwards 1.4s;
+    animation: ${lineAnim} 3.7s ease forwards 2.4s;
   }
   #role > path:nth-of-type(${16}) {
     stroke-dasharray: ${(props) => props.lengthsArray[15]};
     stroke-dashoffset: ${(props) => props.lengthsArray[15]};
-    animation: ${lineAnim} 2.2s ease forwards 1.6s;
+    animation: ${lineAnim} 3.7s ease forwards 2.5s;
   }
   #role > path:nth-of-type(${17}) {
     stroke-dasharray: ${(props) => props.lengthsArray[16]};
     stroke-dashoffset: ${(props) => props.lengthsArray[16]};
-    animation: ${lineAnim} 2.2s ease forwards 1.7s;
+    animation: ${lineAnim} 3.7s ease forwards 2.6s;
   }
 `;
 
@@ -135,7 +124,6 @@ export const AnimatedTitle = () => {
         id="role"
         ref={roleRef}
         width="1041"
-        height="77"
         viewBox="0 0 1041 77"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">
