@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { ProjectCard } from "./ProjectCard";
 
+const StyledProjectsGrid = styled.div`
+  display: flex;
+`;
 export const ProjectsGrid = () => {
   const [topProjects, setTopProjects] = useState([
     {
@@ -11,12 +15,23 @@ export const ProjectsGrid = () => {
       color:
         "radial-gradient(84.05% 84.05% at 22.24% 15.95%, #16191E 0%, #1A1E25 100%)",
       description: "A Rock Paper Scissors game.",
-      githubLinK: "https://github.com/BlessTheBoy/rock-paper-scissors",
+      githubLink: "https://github.com/BlessTheBoy/rock-paper-scissors/",
       liveLink: "https://rock-paper-scissors-d464b.firebaseapp.com/",
+    },
+    {
+      name: "Chat App",
+      tags: ["React", "HTML", "SCSS", "Firebase"],
+      pictureUrl: "chatapp.png",
+      vertical: true,
+      color:
+        "radial-gradient(84.05% 84.05% at 22.24% 15.95%, #2D3037 0%, #202838 100%)",
+      description: "A live chat app for instant messaging",
+      githubLink: "https://github.com/BlessTheBoy/facebook-messenger-clone/",
+      liveLink: "https://facebook-messenger-clone-7efc7.firebaseapp.com/",
     },
   ]);
   return (
-    <div>
+    <StyledProjectsGrid>
       {topProjects.map(
         ({
           name,
@@ -44,6 +59,6 @@ export const ProjectsGrid = () => {
           </div>
         )
       )}
-    </div>
+    </StyledProjectsGrid>
   );
 };
