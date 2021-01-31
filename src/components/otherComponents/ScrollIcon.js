@@ -1,15 +1,30 @@
 import { forwardRef } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const circleAnim = keyframes`
+from {
+  transform: translateY(0px);
+  z-index: 5;
+}
+to {
+  transform: translateY(22px);
+}
+`;
 
 const StyledScrollIcon = styled.div.attrs({ "data-id": "scroll" })`
   object-fit: contain;
 
   & svg {
+    cursor: pointer;
     fill: ${(props) => props.theme.fontColor};
   }
 
   & svg .innerRect {
     stroke: ${(props) => props.theme.fontColor};
+  }
+
+  & .circle {
+    animation: ${circleAnim} 1s infinite alternate-reverse;
   }
 
   @media only screen and (max-width: 900px) {
@@ -33,6 +48,7 @@ export const ScrollIcon = forwardRef((props, ref) => {
           className="innerRect"
         />
         <rect
+          className="circle"
           x="5.38464"
           y="5.38461"
           width="9.23077"

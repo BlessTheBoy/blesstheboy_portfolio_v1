@@ -17,7 +17,7 @@ const StyledLandingText = styled.div`
     position: relative;
     z-index: 0;
   }
-  p.landingText__intro div {
+  p.landingText__intro span {
     position: absolute;
     right: 0;
     width: 100%;
