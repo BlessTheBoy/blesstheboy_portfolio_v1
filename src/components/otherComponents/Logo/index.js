@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledLogo = styled.div`
+const StyledLogo = styled.div.attrs({ "data-id": "logo" })`
     cursor: pointer;
   & svg {
     fill: ${(props) => props.theme.fontColor};
@@ -21,7 +21,7 @@ const StyledLogo = styled.div`
 
 export const Logo = () => {
   return (
-    <StyledLogo>
+    <StyledLogo className="logo">
       <svg
         width="183"
         height="53"

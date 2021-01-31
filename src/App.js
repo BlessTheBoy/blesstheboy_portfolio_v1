@@ -7,6 +7,7 @@ import {
 import { useStateValue } from "./components/StateProvider";
 import { LandingPage } from "./components/pages/LandingPage";
 import { RecentProjects } from "./components/pages/RecentProjects";
+import { ContactPage } from "./components/pages/ContactPage";
 
 function App() {
   const [{ theme }] = useStateValue();
@@ -17,6 +18,7 @@ function App() {
       <div className="App">
         <LandingPage />
         <RecentProjects />
+        <ContactPage />
       </div>
     </ThemeProvider>
   );
