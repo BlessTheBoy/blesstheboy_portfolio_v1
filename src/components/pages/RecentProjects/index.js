@@ -18,6 +18,7 @@ const StyledRecentProjects = styled.section`
   & .recentProjects__container{
     width: 100%
     max-width: 1400px;
+    margin: 0 auto;
   }
 
   & .recentProjects__container h1{
