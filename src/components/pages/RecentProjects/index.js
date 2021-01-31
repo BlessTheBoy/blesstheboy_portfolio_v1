@@ -17,6 +17,23 @@ const StyledRecentProjects = styled.section`
     width: 100%
     max-width: 1400px;
   }
+
+  & .recentProjects__container h1{
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: .4rem;
+  }
+
+  [data-id="projectsGrid"]{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    height: 90%;
+  }
 `;
 
 export const RecentProjects = () => {

@@ -12,6 +12,8 @@ const StyledProjectCard = styled.div`
   position: relative;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
+  font-size: ${(props) => (props.size === "big" ? ".9em" : ".75em")};
+  margin-bottom: ${(props) => (props.size === "big" ? "-2rem" : "0")};
 
   &:after {
     content: " ";
@@ -56,11 +58,11 @@ const StyledProjectCard = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.2em;
   }
 
   & .projectCard_name {
-    font-size: 1.9rem;
+    font-size: 2.2em;
     font-weight: 400;
     font-family: "Bebas Neue", cursive;
     margin-right: 1rem;    
@@ -73,17 +75,18 @@ const StyledProjectCard = styled.div`
     justify-content: center;
   }
   & .projectCard_tags figure {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.8em;
+    padding: 0.2em 0.5em;
     color: #a1a2a6;
     background-color: #4d4d52;
     border-radius: 4px;
-    margin-left: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
   }
   & .projectCard_description {
     color: #ccc;    
     transition: all 0.5s ease-in-out;
+    font-size: .9em;
   }
 
   [data-id="cardlinks"] {
@@ -120,12 +123,14 @@ export const ProjectCard = ({
   description,
   githubLink,
   liveLink,
+  size,
 }) => {
   return (
     <StyledProjectCard
       className="projectCard"
       color={color}
-      vertical={vertical}>
+      vertical={vertical}
+      size={size}>
       <div className="projectCard_content">
         <div className="projectCard_header">
           <h4 className="projectCard_name">{name.toUpperCase()}</h4>
