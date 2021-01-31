@@ -26,8 +26,8 @@ export const RecentProjects = () => {
         <Logo />
         <h1>PROJECTS</h1>
         <ProjectsGrid />
-        <Nav />
-        <HomeSocials />
+        {/* <Nav />
+        <HomeSocials /> */}
       </div>
     </StyledRecentProjects>
   );
