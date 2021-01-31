@@ -9,6 +9,13 @@ const StyledProjectsGrid = styled.div.attrs({ "data-id": "projectsGrid" })`
   gap: 1.5rem;
   align-items: center;
   justify-items: center;
+
+  & .card-container {
+  }
+
+  @media only screen and (max-width: 750px) {
+    gap: 1rem;
+  }
 `;
 export const ProjectsGrid = () => {
   const [topProjects, setTopProjects] = useState([
@@ -68,26 +75,18 @@ export const ProjectsGrid = () => {
           grid,
           size,
         }) => (
-          <div
-            className="card-container"
-            style={{
-              width: size === "big" ? "330px" : "270px",
-              height: size === "big" ? "330px" : "270px",
-              gridColumn: grid.column,
-              gridRow: grid.row,
-            }}>
-            <ProjectCard
-              name={name}
-              size={size}
-              description={description}
-              tags={tags}
-              pictureUrl={pictureUrl}
-              vertical={vertical}
-              color={color}
-              githubLink={githubLink}
-              liveLink={liveLink}
-            />
-          </div>
+          <ProjectCard
+            name={name}
+            size={size}
+            description={description}
+            tags={tags}
+            pictureUrl={pictureUrl}
+            vertical={vertical}
+            color={color}
+            githubLink={githubLink}
+            liveLink={liveLink}
+            grid={grid}
+          />
         )
       )}
     </StyledProjectsGrid>

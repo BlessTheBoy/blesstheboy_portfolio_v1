@@ -7,13 +7,17 @@ const StyledProjectCard = styled.div`
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   color: white;
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
   position: relative;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
   font-size: ${(props) => (props.size === "big" ? ".9em" : ".75em")};
   margin-bottom: ${(props) => (props.size === "big" ? "-2rem" : "0")};
+  width: ${(props) => (props.size === "big" ? "330px" : "270px")};
+  height: ${(props) => (props.size === "big" ? "330px" : "270px")};
+  grid-column: ${(props) => props.grid.column};
+  grid-row: ${(props) => props.grid.row};
 
   &:after {
     content: " ";
@@ -112,6 +116,15 @@ const StyledProjectCard = styled.div`
             margin-left: 5%;
           `}
   }
+
+  @media only screen and (max-width: 900px){    
+    width: ${(props) => (props.size === "big" ? "300px" : "240px")};
+    height: ${(props) => (props.size === "big" ? "300px" : "240px")};
+  }
+  @media only screen and (max-width: 750px){    
+    width: ${(props) => (props.size === "big" ? "270px" : "240px")};
+    height: ${(props) => (props.size === "big" ? "270px" : "240px")};
+  }
 `;
 
 export const ProjectCard = ({
@@ -124,13 +137,15 @@ export const ProjectCard = ({
   githubLink,
   liveLink,
   size,
+  grid,
 }) => {
   return (
     <StyledProjectCard
       className="projectCard"
       color={color}
       vertical={vertical}
-      size={size}>
+      size={size}
+      grid={grid}>
       <div className="projectCard_content">
         <div className="projectCard_header">
           <h4 className="projectCard_name">{name.toUpperCase()}</h4>

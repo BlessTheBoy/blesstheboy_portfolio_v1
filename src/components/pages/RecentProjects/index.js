@@ -13,6 +13,7 @@ const StyledRecentProjects = styled.section`
   position: relative;
   overflow: hidden;
   padding: 1.5rem 4rem 0.5rem;
+  font-size: 1rem;
 
   & .recentProjects__container{
     width: 100%
@@ -20,10 +21,10 @@ const StyledRecentProjects = styled.section`
   }
 
   & .recentProjects__container h1{
-    font-size: 3.5rem;
+    font-size: 3.5em;
     font-weight: 700;
     font-family: 'Bebas Neue', cursive;
-    letter-spacing: .4rem;
+    letter-spacing: .2em;
   }
 
   [data-id="projectsGrid"]{
@@ -50,11 +51,11 @@ const StyledRecentProjects = styled.section`
   .socials{
     display: flex;
     flex-direction: column;
-    margin-top: 7.5rem;
+    margin-top: 7.5em;
   }
 
   .socials a{
-    margin-top: 1.5rem;
+    margin-top: 1.5em;
     margin-right: 1rem;
   }
 
@@ -72,11 +73,18 @@ const StyledRecentProjects = styled.section`
   .allProjects{    
     font-family: "Bebas Neue", cursive;
     color: ${(props) => props.theme.accentColor};
-    font-size: 1.8rem;    
+    font-size: 1.8em;    
     text-decoration: underline;
     position: absolute;
     bottom: 4rem;
-    left: 12rem;
+    left: 20%;
+  }
+
+  @media only screen and (max-width: 900px){
+    font-size: .8rem;
+  }
+  @media only screen and (max-width: 750px){
+    font-size: .7rem;
   }
 `;
 
