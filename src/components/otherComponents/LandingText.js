@@ -94,7 +94,7 @@ export const LandingText = () => {
     <StyledLandingText className="landingText">
       <img src="images/tagtop.png" alt="" id="tagtop" />
       <p className="landingText__intro">
-        <div className="intro_cover"></div> My name is Faruq, I’m a
+        <span className="intro_cover"></span> My name is Faruq, I’m a
       </p>
       {/* <h1>FRONTEND DEVELOPER</h1> */}
       <AnimatedTitle />
