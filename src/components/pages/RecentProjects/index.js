@@ -8,6 +8,7 @@ import { ProjectsGrid } from "../../otherComponents/ProjectsGrid";
 const StyledRecentProjects = styled.section`
   background-color: ${(props) => props.theme.projectBody};
   color: ${(props) => props.theme.fontColor};
+  width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -34,6 +35,12 @@ const StyledRecentProjects = styled.section`
     max-width: 800px;
     height: 90%;
   }
+  [data-id="nav"]{
+    position: absolute;
+    top: 50%;
+    right: 0;      
+    transform: translate(0, -50%);
+  }
 `;
 
 export const RecentProjects = () => {
@@ -43,8 +50,8 @@ export const RecentProjects = () => {
         <Logo />
         <h1>PROJECTS</h1>
         <ProjectsGrid />
-        {/* <Nav />
-        <HomeSocials /> */}
+        <Nav />
+        {/* <HomeSocials /> */}
       </div>
     </StyledRecentProjects>
   );

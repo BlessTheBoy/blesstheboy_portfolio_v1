@@ -43,7 +43,7 @@ const StyledProjectCard = styled.div`
     }
 
     & .projectCard_description {
-      color: #444;
+      color: #222;
     }
   }
 }
