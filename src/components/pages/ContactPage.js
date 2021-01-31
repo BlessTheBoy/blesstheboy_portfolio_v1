@@ -73,6 +73,7 @@ const StyledContactPage = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: .8rem;
   }
   & .contact__container .footer svg{   
       object-fit: contain;    
