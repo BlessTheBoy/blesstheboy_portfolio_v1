@@ -124,7 +124,7 @@ const StyledProjects = styled.div`
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.5s ease-in-out;
-    height: ${(props) => (props.projectTheme?.index / 64) * 150 + "px"};
+    height: ${(props) => (props.index / props.projectsLength) * 150 + "px"};
     width: 3px;
     background: ${(props) => props.projectTheme?.progessBar};
   }
@@ -144,6 +144,13 @@ const StyledProjects = styled.div`
     align-items: center;
     cursor: pointer;
     width: 90px;
+  }
+  .prev {
+    visibility: ${(props) => (props.index > 1 ? "visible" : "hidden")};
+  }
+  .next {
+    visibility: ${(props) =>
+      props.index !== props.projectsLength ? "visible" : "hidden"};
   }
   .prev:hover,
   .next:hover {
@@ -440,16 +447,31 @@ export const Projects = () => {
       navColor: "#CCC",
     },
   ];
+
   const [projectTheme, setProjectTheme] = useState();
   const [liveStroke, setLiveStroke] = useState(null);
   const liveCircle = useRef();
+  const [projectDetails, setProjectDetails] = useState({
+    index: 13,
+    title: "Rock Paper Scissors",
+    tags: ["React", "HTML", "SCSS"],
+    imgUrl: "rockpaperscissors.jpg",
+    description: "A fun game of Rock Paper Scissors",
+    gitRepo: "rock-paper-scissors",
+    liveUrl: "https://rock-paper-scissors-d464b.firebaseapp.com/",
+  });
+  const projectsLength = 68;
 
   useEffect(() => {
     setProjectTheme(projectThemes[5]);
     setLiveStroke(liveCircle.current.getTotalLength());
   }, []);
   return (
-    <StyledProjects projectTheme={projectTheme} liveCircleLength={liveStroke}>
+    <StyledProjects
+      projectTheme={projectTheme}
+      liveCircleLength={liveStroke}
+      index={projectDetails?.index}
+      projectsLength={projectsLength}>
       <div className="projects__container">
         <div className="projects__header">
           <Logo color={projectTheme?.headerColor} />
@@ -482,22 +504,13 @@ export const Projects = () => {
         </div>
         <div className="projects__content">
           <div className="projects__progress">
-            <p className="currentProject">13</p>
+            <p className="currentProject">{projectDetails.index}</p>
             <div className="progress">
               <div className="progress__stroke"></div>
               <div className="progress__bar"></div>
             </div>
-            {/* <svg
-              width="5"
-              height="256"
-              viewBox="0 0 5 256"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 0V255.5" stroke="#AAAAAA" stroke-width="2" />
-              <path d="M2.5 1V56" stroke="white" stroke-width="4" />
-            </svg> */}
 
-            <p className="totalProjects">68</p>
+            <p className="totalProjects">{projectsLength}</p>
           </div>
           <div className="projects__controls">
             <div className="prev">
@@ -543,26 +556,27 @@ export const Projects = () => {
           </div>
           <div className="projects__details">
             <div className="details__header">
-              <h1>Rock Paper Scissors</h1>
+              <h1>{projectDetails.title}</h1>
               <div className="details__tags">
-                <p>React</p>
-                <p>HTML</p>
-                <p>SCSS</p>
+                {projectDetails.tags.map((tag) => (
+                  <p>{tag}</p>
+                ))}
               </div>
             </div>
             <div className="details__image">
               <img src="images/ducktape.png" alt="ducktape" id="ducktape" />
               <img
-                src="images/rockpaperscissors.jpg"
-                alt="rock paper scissors"
+                src={`images/${projectDetails.imgUrl}`}
+                alt={projectDetails.title}
                 id="mainpic"
               />
               <p className="details__description">
-                ... A Todo List Application
+                ... {projectDetails.description}
               </p>
             </div>
             <div className="details__github">
-              <a href="">
+              <a
+                href={`https://github.com/BlessTheBoy/${projectDetails.gitRepo}`}>
                 <svg
                   width="40"
                   height="40"
@@ -584,7 +598,7 @@ export const Projects = () => {
             </div>
           </div>
           <div className="liveButton">
-            <a href="">
+            <a href={projectDetails.liveUrl}>
               <svg
                 width="173"
                 viewBox="0 0 173 168"
