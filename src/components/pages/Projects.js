@@ -26,8 +26,8 @@ const lineAnim = (length) => keyframes`
 `;
 
 const StyledProjects = styled.div`
-  background-color: ${(props) => props.projectTheme.backgroundColor};
-  color: ${(props) => props.projectTheme.backgroundColor};
+  background-color: ${(props) => props.projectTheme?.backgroundColor};
+  color: ${(props) => props.projectTheme?.fontColor};
   width: 100%;
   height: 100vh;
   position: relative;
@@ -47,7 +47,7 @@ const StyledProjects = styled.div`
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: ${(props) => props.projectTheme.backgroundOpacity};
+    opacity: ${(props) => props.projectTheme?.backgroundOpacity};
   }
 
   .projects__container {
@@ -77,11 +77,11 @@ const StyledProjects = styled.div`
     margin-left: 3rem;
   }
   .projects__header-socials a svg {
-    fill: ${(props) => props.projectTheme.fontColor};
+    fill: ${(props) => props.projectTheme?.headerColor};
     width: 25px;
   }
   .projects__header-socials a:hover svg {
-    fill: ${(props) => props.projectTheme.accentColor};
+    fill: ${(props) => props.projectTheme?.accentColor};
   }
 
   .projects__content {
@@ -101,7 +101,7 @@ const StyledProjects = styled.div`
     flex-direction: column;
   }
   .projects__progress p {
-    color: ${(props) => props.projectTheme.fontColor};
+    color: ${(props) => props.projectTheme?.fontColor};
   }
   .progress {
     position: relative;
@@ -116,7 +116,7 @@ const StyledProjects = styled.div`
     transform: translateX(-50%);
     height: 150px;
     width: 1px;
-    background: ${(props) => props.projectTheme.progessStroke};
+    background: ${(props) => props.projectTheme?.progessStroke};
   }
   .progress__bar {
     position: absolute;
@@ -124,9 +124,9 @@ const StyledProjects = styled.div`
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.5s ease-in-out;
-    height: ${(props) => (props.projectTheme.index / 64) * 150 + "px"};
+    height: ${(props) => (props.projectTheme?.index / 64) * 150 + "px"};
     width: 3px;
-    background: ${(props) => props.projectTheme.progessBar};
+    background: ${(props) => props.projectTheme?.progessBar};
   }
   .projects__controls {
     position: absolute;
@@ -148,8 +148,8 @@ const StyledProjects = styled.div`
   .prev:hover,
   .next:hover {
     & > svg {
-      stroke: ${(props) => props.projectTheme.accentColor};
-      fill: ${(props) => props.projectTheme.accentColor};
+      stroke: ${(props) => props.projectTheme?.accentColor};
+      fill: ${(props) => props.projectTheme?.accentColor};
     }
 
     & .prevArr {
@@ -171,8 +171,8 @@ const StyledProjects = styled.div`
   }
   .prev svg,
   .next svg {
-    stroke: ${(props) => props.projectTheme.navColor};
-    fill: ${(props) => props.projectTheme.navColor};
+    stroke: ${(props) => props.projectTheme?.navColor};
+    fill: ${(props) => props.projectTheme?.navColor};
     margin: 0 5px;
   }
   .prevArr,
@@ -196,26 +196,10 @@ const StyledProjects = styled.div`
   .nextArr p {
     position: absolute;
     bottom: -100%;
-    color: ${(props) => props.projectTheme.accentColor};
+    color: ${(props) => props.projectTheme?.accentColor};
     font-family: "Bebas Neue", cursive;
     transition: all 0.3s ease-in-out;
   }
-  // .prevArr:before {
-  //   content: "prev";
-  //   position: absolute;
-  //   right: 0;
-  //   bottom: 100%;
-  //   width: 100%;
-  //   height: 0;
-  //   background-color: ${(props) => props.projectTheme.backgroundColor};
-  //   z-index: 100;
-  //   transform-origin: 100% 0;
-  //   font-family: "Bebas Neue", cursive;
-  //   font-size: 1em;
-  //   opacity: 1;
-  //   transition: all 0.5s ease-in-out;
-  //   z-index: 20;
-  // }
 
   .prevArr svg,
   .nextArr svg {
@@ -223,30 +207,23 @@ const StyledProjects = styled.div`
   }
 
   .projects__details {
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     width: 60%;
     margin: 0 auto;
-    color: ${(props) => props.projectTheme.fontColor};
+    color: ${(props) => props.projectTheme?.fontColor};
   }
 
   .details__header {
     position: relative;
     display: flex;
-    // justify-content: space-between;
     flex-wrap: wrap;
     align-items: flex-end;
     z-index: 1;
   }
   .details__header h1 {
     font-size: 4em;
-    // font-weight: 700;
     font-family: "Bebas Neue", cursive;
     letter-spacing: 5px;
     margin-right: 3rem;
-    // margin-bottom: 0.2em;
     line-height: 1;
   }
   .details__tags {
@@ -327,34 +304,32 @@ const StyledProjects = styled.div`
   .details__github a {
     display: flex;
     align-items: center;
-    color: inherit;
+    color: ${(props) => props.projectTheme?.fontColor};
   }
 
-  .details__github a > svg {
+  .details__github a svg {
     object-fit: contain;
     width: 22px;
     margin-right: 0.5rem;
-    fill: ${(props) => props.theme.fontColor};
+    fill: ${(props) => props.projectTheme?.fontColor};
   }
 
   .details__github a p {
     display: flex;
     align-items: center;
-    // opacity: 0.6;
   }
 
   .details__github a p svg {
     object-fit: contain;
     width: 12px;
     margin-left: 5px;
-    fill: ${(props) => props.theme.fontColor};
   }
 
   .details__github a:hover {
-    color: ${(props) => props.theme.accentColor};
+    color: ${(props) => props.projectTheme?.accentColor};
 
     & svg {
-      fill: ${(props) => props.theme.accentColor};
+      fill: ${(props) => props.projectTheme?.accentColor};
     }
   }
 
@@ -369,7 +344,7 @@ const StyledProjects = styled.div`
   }
 
   .svgText {
-    fill: ${(props) => props.theme.accentColor};
+    fill: ${(props) => props.projectTheme?.accentColor};
     transform-origin: 50% 50%;
     animation: ${rotate} 10s linear infinite;
   }
@@ -385,35 +360,99 @@ const StyledProjects = styled.div`
   }
   .liveCircle {
     transform-origin: 50% 50%;
+    stroke: ${(props) => props.projectTheme?.progessBar};
     stroke-dasharray: ${(props) => props.liveCircleLength};
     stroke-dashoffset: ${(props) => props.liveCircleLength};
     animation: ${(props) => lineAnim(props.liveCircleLength)} 4s ease forwards
       infinite;
   }
+  .stableCircle {
+    stroke: ${(props) => props.projectTheme?.progessStroke};
+  }
 `;
 
 export const Projects = () => {
-  const [theme, setTheme] = useState({
-    backgroundColor: "#302f30",
-    backgroundOpacity: 0.6,
-    fontColor: "#FFF",
-    accentColor: "#BFFF00",
-    progessBar: "#FFFFFF",
-    progessStroke: "#AAAAAA",
-    index: 13,
-    navColor: "#CCCCCC",
-  });
+  const projectThemes = [
+    {
+      backgroundColor: "#302f30",
+      backgroundOpacity: 0.6,
+      fontColor: "#FFF",
+      headerColor: "#FFF",
+      navColor: "#CCCCCC",
+      accentColor: "#BFFF00",
+      progessBar: "#FFFFFF",
+      progessStroke: "#AAAAAA",
+      index: 13,
+    },
+    {
+      backgroundColor: "#B07864",
+      backgroundOpacity: 0.4,
+      fontColor: "#FFF",
+      headerColor: "#EEE",
+      accentColor: "#BFFF00",
+      progessBar: "#FFFFFF",
+      progessStroke: "#AAAAAA",
+      index: 13,
+      navColor: "#EEE",
+    },
+    {
+      backgroundColor: "#DCDDE0",
+      backgroundOpacity: 0.4,
+      fontColor: "#000",
+      headerColor: "#333",
+      accentColor: "#4169E1",
+      progessBar: "#000",
+      progessStroke: "#555",
+      index: 13,
+      navColor: "#333",
+    },
+    {
+      backgroundColor: "#BD3326",
+      backgroundOpacity: 0.4,
+      fontColor: "#FFF",
+      headerColor: "#CCC",
+      accentColor: "#4169E1",
+      progessBar: "#FFF",
+      progessStroke: "#AAA",
+      index: 13,
+      navColor: "#CCC",
+    },
+    {
+      backgroundColor: "#066C94",
+      backgroundOpacity: 0.4,
+      fontColor: "#FFF",
+      headerColor: "#CCC",
+      accentColor: "#BFFF00",
+      progessBar: "#FFF",
+      progessStroke: "#AAA",
+      index: 13,
+      navColor: "#CCC",
+    },
+    {
+      backgroundColor: "#165041",
+      backgroundOpacity: 0.4,
+      fontColor: "#FFF",
+      headerColor: "#CCC",
+      accentColor: "#BFFF00",
+      progessBar: "#FFF",
+      progessStroke: "#AAA",
+      index: 13,
+      navColor: "#CCC",
+    },
+  ];
+  const [projectTheme, setProjectTheme] = useState();
   const [liveStroke, setLiveStroke] = useState(null);
   const liveCircle = useRef();
 
   useEffect(() => {
+    setProjectTheme(projectThemes[5]);
     setLiveStroke(liveCircle.current.getTotalLength());
   }, []);
   return (
-    <StyledProjects projectTheme={theme} liveCircleLength={liveStroke}>
+    <StyledProjects projectTheme={projectTheme} liveCircleLength={liveStroke}>
       <div className="projects__container">
         <div className="projects__header">
-          <Logo />
+          <Logo color={projectTheme?.headerColor} />
           <div className="projects__header-socials">
             <a
               href="https://twitter.com/BlessTheBoy_"
@@ -535,7 +574,6 @@ export const Projects = () => {
                   Github{" "}
                   <svg
                     width="20"
-                    height="20"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.825 5.81596L14.4083 0.191032C14.2316 0.0077761 13.9608 -0.0497489 13.7251 0.0451597C13.4884 0.140984 13.3334 0.370168 13.3334 0.625139V3.33354H13.1251C8.64516 3.33354 5.00018 6.97852 5.00018 11.4584V12.7084C5.00018 12.9983 5.20434 13.24 5.48678 13.306C5.53271 13.3176 5.57848 13.3226 5.62426 13.3226C5.86016 13.3226 6.08599 13.1842 6.19509 12.9668C7.36679 10.6226 9.72257 9.16675 12.3434 9.16675H13.3334V11.875C13.3334 12.1301 13.4884 12.3593 13.7251 12.4542C13.9593 12.55 14.2316 12.4918 14.4083 12.3083L19.825 6.68342C20.0583 6.44096 20.0583 6.05934 19.825 5.81596Z" />
@@ -554,25 +592,27 @@ export const Projects = () => {
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M88.5449 86.3839C87.3182 87.6079 85.3302 87.6079 84.1035 86.3839C82.8773 85.1598 82.8773 83.1752 84.1035 81.9512C85.3302 80.7272 87.3182 80.7272 88.5449 81.9512C89.7712 83.1752 89.7712 85.1598 88.5449 86.3839Z"
-                  fill="white"
+                  fill={projectTheme?.progessBar}
                 />
                 <path
                   d="M92.835 91.1331C92.4524 91.1331 92.0698 90.9871 91.7786 90.6946C91.196 90.1113 91.1971 89.1661 91.7804 88.584C92.9626 87.4041 93.6134 85.8356 93.6134 84.1675C93.6134 82.4994 92.9626 80.9309 91.7804 79.7511C91.1971 79.1685 91.196 78.2237 91.7786 77.64C92.3607 77.0567 93.3059 77.0555 93.8892 77.6381C95.6366 79.382 96.5987 81.7006 96.5987 84.1675C96.5987 86.634 95.6366 88.953 93.8892 90.6969C93.598 90.9878 93.2165 91.1331 92.835 91.1331Z"
-                  fill="white"
+                  fill={projectTheme?.progessBar}
                 />
                 <path
                   d="M96.2113 95.5276C95.8287 95.5276 95.4461 95.3816 95.1548 95.0896C94.5722 94.5059 94.5733 93.5611 95.1567 92.9785C97.5149 90.6248 98.814 87.4958 98.814 84.1675C98.814 80.8392 97.5149 77.7102 95.1567 75.3565C94.5733 74.7739 94.5722 73.8291 95.1548 73.2454C95.7373 72.6621 96.6821 72.6609 97.2655 73.2435C100.189 76.1613 101.799 80.0408 101.799 84.1675C101.799 88.2942 100.189 92.1741 97.2655 95.0918C96.9742 95.3824 96.5927 95.5276 96.2113 95.5276Z"
-                  fill="white"
+                  fill={projectTheme?.progessBar}
                 />
                 <path
                   d="M79.8061 91.1331C79.4246 91.1331 79.0431 90.9878 78.7515 90.6969C77.0041 88.953 76.042 86.634 76.042 84.1675C76.042 81.7006 77.0041 79.382 78.7515 77.6381C79.3348 77.0555 80.28 77.0563 80.8622 77.64C81.4447 78.2233 81.4436 79.1685 80.8603 79.7511C79.6782 80.9309 79.0273 82.4994 79.0273 84.1675C79.0273 85.8356 79.6782 87.4041 80.8603 88.584C81.4436 89.1662 81.4447 90.1113 80.8622 90.6946C80.5709 90.9867 80.1883 91.1331 79.8061 91.1331Z"
-                  fill="white"
+                  fill={projectTheme?.progessBar}
                 />
                 <path
                   d="M76.4298 95.5277C76.048 95.5277 75.6665 95.3824 75.3752 95.0915C72.4518 92.1737 70.8418 88.2942 70.8418 84.1675C70.8418 80.0405 72.4518 76.1609 75.3752 73.2432C75.9585 72.661 76.9037 72.6617 77.4859 73.2454C78.0685 73.8288 78.0673 74.7735 77.484 75.3561C75.1258 77.7098 73.8267 80.8389 73.8267 84.1671C73.8267 87.4954 75.1258 90.6249 77.484 92.9785C78.0673 93.5611 78.0685 94.5059 77.4859 95.0896C77.1946 95.3816 76.812 95.5277 76.4298 95.5277Z"
-                  fill="white"
+                  fill={projectTheme?.progessBar}
                 />
                 <circle
+                  className="stableCircle"
+                  stroke={projectTheme?.progessStroke}
                   cx="86.4702"
                   cy="84.4702"
                   r="38.4702"
@@ -585,7 +625,7 @@ export const Projects = () => {
                   cx="86.4702"
                   cy="84.4702"
                   r="37.4702"
-                  stroke="white"
+                  stroke={projectTheme?.progessBar}
                   stroke-width="4"
                 />
                 <path
