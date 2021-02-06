@@ -1,79 +1,431 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Logo } from "../otherComponents/Logo";
 
-const StyledProjects = styled.div``;
+const StyledProjects = styled.div`
+  background-color: ${(props) => props.projectTheme.backgroundColor};
+  color: ${(props) => props.projectTheme.backgroundColor};
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 4rem 0.5rem;
+  font-size: 1rem;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  &::after {
+    content: "";
+    background-image: url("images/overlay.png");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: ${(props) => props.projectTheme.backgroundOpacity};
+  }
+
+  .projects__container {
+    // flex: 1;
+    // overflow: hidden;
+    max-height: 100%;
+    overflow-y: hidden;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1400px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projects__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .projects__header-socials {
+    display: flex;
+    align-items: center;
+  }
+  .projects__header-socials a {
+    margin-left: 3rem;
+  }
+  .projects__header-socials a svg {
+    fill: ${(props) => props.projectTheme.fontColor};
+    width: 25px;
+  }
+  .projects__header-socials a:hover svg {
+    fill: ${(props) => props.projectTheme.accentColor};
+  }
+
+  .projects__content {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .projects__progress {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .projects__progress p {
+    color: ${(props) => props.projectTheme.fontColor};
+  }
+  .progress {
+    position: relative;
+    height: 150px;
+    margin: 0.5rem 0;
+  }
+
+  .progress__stroke {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 1px;
+    background: ${(props) => props.projectTheme.progessStroke};
+  }
+  .progress__bar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: ${(props) => (props.projectTheme.index / 64) * 150 + "px"};
+    width: 3px;
+    background: ${(props) => props.projectTheme.progessBar};
+  }
+  .projects__controls {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+  }
+  .prev,
+  .next {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 90px;
+  }
+  .prev:hover,
+  .next:hover {
+    color: ${(props) => props.projectTheme.accentColor};
+
+    & svg {
+      stroke: ${(props) => props.projectTheme.accentColor};
+      fill: ${(props) => props.projectTheme.accentColor};
+    }
+  }
+  .prev svg,
+  .next svg {
+    stroke: ${(props) => props.projectTheme.navColor};
+    fill: ${(props) => props.projectTheme.navColor};
+    margin: 0 5px;
+  }
+  .prevArr,
+  .nextArr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .prevArr svg,
+  .nextArr svg {
+    width: 20px;
+  }
+
+  .projects__details {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    width: 60%;
+    margin: 0 auto;
+    color: ${(props) => props.projectTheme.fontColor};
+  }
+
+  .details__header {
+    position: relative;
+    display: flex;
+    // justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    z-index: 1;
+  }
+  .details__header h1 {
+    font-size: 4em;
+    // font-weight: 700;
+    font-family: "Bebas Neue", cursive;
+    letter-spacing: 5px;
+    margin-right: 3rem;
+    // margin-bottom: 0.2em;
+    line-height: 1;
+  }
+  .details__tags {
+    display: flex;
+    margin-bottom: 0.4em;
+    margin-top: 0.2em;
+  }
+  .details__tags p {
+    font-size: 0.8em;
+    height: fit-content;
+    padding: 0.2em 0.5em;
+    color: #a1a2a6;
+    background-color: #4d4d52;
+    border-radius: 4px;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .details__image {
+    position: relative;
+    margin: 3rem auto 0;
+    text-align: center;
+    width: 80%;
+    filter: drop-shadow(-20px 25px 12px rgba(0, 0, 0, 0.25));
+    transform: rotate(-4.45deg);
+  }
+  .details__image #mainpic {
+    object-fit: contain;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .details__image #ducktape {
+    object-fit: contain;
+    position: absolute;
+    width: 40%;
+    right: -10%;
+    top: -22%;
+  }
+  .details__description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    padding: 1em;
+    padding-top: 7em;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+  .details__description:after {
+    content: "";
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    position: absolute;
+    top: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .details__image:hover .details__description {
+    opacity: 1;
+
+    &:after {
+      top: 0;
+    }
+  }
+
+  .details__github {
+    display: flex;
+    margin-top: 2rem;
+    margin-left: 6%;
+  }
+
+  .details__github a {
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
+
+  .details__github a > svg {
+    object-fit: contain;
+    width: 22px;
+    margin-right: 0.5rem;
+    fill: ${(props) => props.theme.fontColor};
+  }
+
+  .details__github a p {
+    display: flex;
+    align-items: center;
+    // opacity: 0.6;
+  }
+
+  .details__github a p svg {
+    object-fit: contain;
+    width: 12px;
+    margin-left: 5px;
+    fill: ${(props) => props.theme.fontColor};
+  }
+
+  .details__github a:hover {
+    color: ${(props) => props.theme.accentColor};
+
+    & svg {
+      fill: ${(props) => props.theme.accentColor};
+    }
+  }
+`;
 
 export const Projects = () => {
+  const [theme, setTheme] = useState({
+    backgroundColor: "#302f30",
+    backgroundOpacity: 0.6,
+    fontColor: "#FFF",
+    accentColor: "#BFFF00",
+    progessBar: "#FFFFFF",
+    progessStroke: "#AAAAAA",
+    index: 13,
+    navColor: "#CCCCCC",
+  });
   return (
-    <StyledProjects>
+    <StyledProjects projectTheme={theme}>
       <div className="projects__container">
         <div className="projects__header">
           <Logo />
           <div className="projects__header-socials">
-            <svg
-              width="40"
-              viewBox="0 0 40 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 4.5975C38.5125 5.25 36.9275 5.6825 35.275 5.8925C36.975 4.8775 38.2725 3.2825 38.8825 1.36C37.2975 2.305 35.5475 2.9725 33.6825 3.345C32.1775 1.7425 30.0325 0.75 27.6925 0.75C23.1525 0.75 19.4975 4.435 19.4975 8.9525C19.4975 9.6025 19.5525 10.2275 19.6875 10.8225C12.87 10.49 6.8375 7.2225 2.785 2.245C2.0775 3.4725 1.6625 4.8775 1.6625 6.39C1.6625 9.23 3.125 11.7475 5.305 13.205C3.9875 13.18 2.695 12.7975 1.6 12.195C1.6 12.22 1.6 12.2525 1.6 12.285C1.6 16.27 4.4425 19.58 8.17 20.3425C7.5025 20.525 6.775 20.6125 6.02 20.6125C5.495 20.6125 4.965 20.5825 4.4675 20.4725C5.53 23.72 8.545 26.1075 12.13 26.185C9.34 28.3675 5.7975 29.6825 1.9625 29.6825C1.29 29.6825 0.645 29.6525 0 29.57C3.6325 31.9125 7.9375 33.25 12.58 33.25C27.67 33.25 35.92 20.75 35.92 9.915C35.92 9.5525 35.9075 9.2025 35.89 8.855C37.5175 7.7 38.885 6.2575 40 4.5975Z" />
-            </svg>
-            <svg
-              width="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.9975 0C8.955 0 0 9.18112 0 20.5069C0 29.5655 5.73 37.2504 13.68 39.9644C14.68 40.1534 15.045 39.5202 15.045 38.9764C15.045 38.4887 15.0275 37.1994 15.0175 35.4888C9.455 36.727 8.28 32.739 8.28 32.739C7.3725 30.3697 6.06 29.7391 6.06 29.7391C4.2425 28.4676 6.195 28.4931 6.195 28.4931C8.2025 28.6387 9.2575 30.6071 9.2575 30.6071C11.0425 33.7399 13.94 32.836 15.08 32.3101C15.26 30.985 15.7775 30.0812 16.35 29.568C11.91 29.0497 7.24 27.2906 7.24 19.4346C7.24 17.1955 8.02 15.3649 9.3 13.93C9.0925 13.4117 8.4075 11.3258 9.495 8.50454C9.495 8.50454 11.175 7.95306 14.995 10.6058C16.59 10.1513 18.3 9.92409 20.0025 9.91643C21.7 9.92664 23.4125 10.1513 25.01 10.6083C28.8275 7.95561 30.505 8.50709 30.505 8.50709C31.595 11.3309 30.91 13.4142 30.705 13.9325C31.9875 15.3674 32.76 17.198 32.76 19.4371C32.76 27.3136 28.085 29.0472 23.63 29.5552C24.3475 30.1884 24.9875 31.4395 24.9875 33.3518C24.9875 36.0939 24.9625 38.3049 24.9625 38.9764C24.9625 39.5253 25.3225 40.1636 26.3375 39.9619C34.275 37.2453 40 29.5629 40 20.5069C40 9.18112 31.045 0 19.9975 0Z" />
-            </svg>
+            <a
+              href="https://twitter.com/BlessTheBoy_"
+              target="_blank"
+              rel="noopener noreferrer">
+              <svg
+                width="40"
+                viewBox="0 0 40 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 4.5975C38.5125 5.25 36.9275 5.6825 35.275 5.8925C36.975 4.8775 38.2725 3.2825 38.8825 1.36C37.2975 2.305 35.5475 2.9725 33.6825 3.345C32.1775 1.7425 30.0325 0.75 27.6925 0.75C23.1525 0.75 19.4975 4.435 19.4975 8.9525C19.4975 9.6025 19.5525 10.2275 19.6875 10.8225C12.87 10.49 6.8375 7.2225 2.785 2.245C2.0775 3.4725 1.6625 4.8775 1.6625 6.39C1.6625 9.23 3.125 11.7475 5.305 13.205C3.9875 13.18 2.695 12.7975 1.6 12.195C1.6 12.22 1.6 12.2525 1.6 12.285C1.6 16.27 4.4425 19.58 8.17 20.3425C7.5025 20.525 6.775 20.6125 6.02 20.6125C5.495 20.6125 4.965 20.5825 4.4675 20.4725C5.53 23.72 8.545 26.1075 12.13 26.185C9.34 28.3675 5.7975 29.6825 1.9625 29.6825C1.29 29.6825 0.645 29.6525 0 29.57C3.6325 31.9125 7.9375 33.25 12.58 33.25C27.67 33.25 35.92 20.75 35.92 9.915C35.92 9.5525 35.9075 9.2025 35.89 8.855C37.5175 7.7 38.885 6.2575 40 4.5975Z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/BlessTheBoy"
+              target="_blank"
+              rel="noopener noreferrer">
+              <svg
+                width="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.9975 0C8.955 0 0 9.18112 0 20.5069C0 29.5655 5.73 37.2504 13.68 39.9644C14.68 40.1534 15.045 39.5202 15.045 38.9764C15.045 38.4887 15.0275 37.1994 15.0175 35.4888C9.455 36.727 8.28 32.739 8.28 32.739C7.3725 30.3697 6.06 29.7391 6.06 29.7391C4.2425 28.4676 6.195 28.4931 6.195 28.4931C8.2025 28.6387 9.2575 30.6071 9.2575 30.6071C11.0425 33.7399 13.94 32.836 15.08 32.3101C15.26 30.985 15.7775 30.0812 16.35 29.568C11.91 29.0497 7.24 27.2906 7.24 19.4346C7.24 17.1955 8.02 15.3649 9.3 13.93C9.0925 13.4117 8.4075 11.3258 9.495 8.50454C9.495 8.50454 11.175 7.95306 14.995 10.6058C16.59 10.1513 18.3 9.92409 20.0025 9.91643C21.7 9.92664 23.4125 10.1513 25.01 10.6083C28.8275 7.95561 30.505 8.50709 30.505 8.50709C31.595 11.3309 30.91 13.4142 30.705 13.9325C31.9875 15.3674 32.76 17.198 32.76 19.4371C32.76 27.3136 28.085 29.0472 23.63 29.5552C24.3475 30.1884 24.9875 31.4395 24.9875 33.3518C24.9875 36.0939 24.9625 38.3049 24.9625 38.9764C24.9625 39.5253 25.3225 40.1636 26.3375 39.9619C34.275 37.2453 40 29.5629 40 20.5069C40 9.18112 31.045 0 19.9975 0Z" />
+              </svg>
+            </a>
           </div>
         </div>
         <div className="projects__content">
           <div className="projects__progress">
             <p className="currentProject">13</p>
-            <svg
-              width="3"
+            <div className="progress">
+              <div className="progress__stroke"></div>
+              <div className="progress__bar"></div>
+            </div>
+            {/* <svg
+              width="5"
               height="256"
-              viewBox="0 0 3 256"
+              viewBox="0 0 5 256"
               fill="none"
               xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.5 0V255.5" stroke="#AAAAAA" stroke-width="2" />
-            </svg>
+              <path d="M2 0V255.5" stroke="#AAAAAA" stroke-width="2" />
+              <path d="M2.5 1V56" stroke="white" stroke-width="4" />
+            </svg> */}
+
             <p className="totalProjects">68</p>
           </div>
           <div className="projects__controls">
             <div className="prev">
+              <div className="prevArr">
+                <svg
+                  width="26"
+                  viewBox="0 0 26 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.39757 10.1616L12.3143 0.411596C12.6371 0.146163 13.0856 0.0920298 13.4648 0.27078C13.8418 0.450596 14.0833 0.831963 14.0833 1.2501V8.71428L24.2309 0.411596C24.5549 0.146163 25.0023 0.0920298 25.3814 0.27078C25.7584 0.450596 26 0.831963 26 1.2501V20.7501C26 21.1683 25.7584 21.5496 25.3814 21.7294C25.233 21.7987 25.0738 21.8334 24.9167 21.8334C24.6708 21.8334 24.4281 21.75 24.2309 21.5886L14.0834 13.2859V20.7501C14.0834 21.1683 13.8418 21.5496 13.4648 21.7294C13.3164 21.7987 13.1571 21.8334 13.0001 21.8334C12.7541 21.8334 12.5115 21.75 12.3143 21.5886L0.397619 11.8386C0.146301 11.6328 5.34058e-05 11.3251 5.34058e-05 11.0001C5.34058e-05 10.6751 0.146252 10.3675 0.39757 10.1616Z" />
+                </svg>
+              </div>
               <svg
-                width="26"
-                height="22"
-                viewBox="0 0 26 22"
+                width="50"
+                viewBox="0 0 50 3"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0.39757 10.1616L12.3143 0.411596C12.6371 0.146163 13.0856 0.0920298 13.4648 0.27078C13.8418 0.450596 14.0833 0.831963 14.0833 1.2501V8.71428L24.2309 0.411596C24.5549 0.146163 25.0023 0.0920298 25.3814 0.27078C25.7584 0.450596 26 0.831963 26 1.2501V20.7501C26 21.1683 25.7584 21.5496 25.3814 21.7294C25.233 21.7987 25.0738 21.8334 24.9167 21.8334C24.6708 21.8334 24.4281 21.75 24.2309 21.5886L14.0834 13.2859V20.7501C14.0834 21.1683 13.8418 21.5496 13.4648 21.7294C13.3164 21.7987 13.1571 21.8334 13.0001 21.8334C12.7541 21.8334 12.5115 21.75 12.3143 21.5886L0.397619 11.8386C0.146301 11.6328 5.34058e-05 11.3251 5.34058e-05 11.0001C5.34058e-05 10.6751 0.146252 10.3675 0.39757 10.1616Z"
-                  fill="#CCCCCC"
-                />
-              </svg>
-              <svg
-                width="71"
-                height="4"
-                viewBox="0 0 71 4"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 2H71" stroke="#CCCCCC" stroke-width="4" />
+                <path d="M0 2H50" stroke-width="3" />
               </svg>
             </div>
             <div className="next">
               <svg
-                width="26"
-                height="23"
-                viewBox="0 0 26 23"
+                width="50"
+                viewBox="0 0 50 3"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M25.6024 10.6293L13.6857 0.50427C13.3629 0.228627 12.9144 0.172413 12.5352 0.358038C12.1582 0.54477 11.9167 0.940805 11.9167 1.37502V9.12629L1.76907 0.50427C1.44513 0.228627 0.99775 0.172413 0.618566 0.358038C0.241566 0.54477 0 0.940805 0 1.37502V21.625C0 22.0593 0.241566 22.4553 0.618566 22.642C0.767 22.714 0.92625 22.75 1.08332 22.75C1.32925 22.75 1.57188 22.6634 1.76907 22.4958L11.9166 13.8737V21.625C11.9166 22.0593 12.1582 22.4553 12.5352 22.642C12.6836 22.714 12.8429 22.75 12.9999 22.75C13.2459 22.75 13.4885 22.6634 13.6857 22.4958L25.6024 12.3708C25.8537 12.157 25.9999 11.8375 25.9999 11.5C25.9999 11.1625 25.8537 10.8431 25.6024 10.6293Z"
-                  fill="#CCCCCC"
-                />
+                <path d="M0 2H50" stroke-width="3" />
               </svg>
+              <div className="nextArr">
+                <svg
+                  width="26"
+                  height="23"
+                  viewBox="0 0 26 23"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25.6024 10.6293L13.6857 0.50427C13.3629 0.228627 12.9144 0.172413 12.5352 0.358038C12.1582 0.54477 11.9167 0.940805 11.9167 1.37502V9.12629L1.76907 0.50427C1.44513 0.228627 0.99775 0.172413 0.618566 0.358038C0.241566 0.54477 0 0.940805 0 1.37502V21.625C0 22.0593 0.241566 22.4553 0.618566 22.642C0.767 22.714 0.92625 22.75 1.08332 22.75C1.32925 22.75 1.57188 22.6634 1.76907 22.4958L11.9166 13.8737V21.625C11.9166 22.0593 12.1582 22.4553 12.5352 22.642C12.6836 22.714 12.8429 22.75 12.9999 22.75C13.2459 22.75 13.4885 22.6634 13.6857 22.4958L25.6024 12.3708C25.8537 12.157 25.9999 11.8375 25.9999 11.5C25.9999 11.1625 25.8537 10.8431 25.6024 10.6293Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div className="projects__details">
+            <div className="details__header">
+              <h1>Rock Paper Scissors</h1>
+              <div className="details__tags">
+                <p>React</p>
+                <p>HTML</p>
+                <p>SCSS</p>
+              </div>
+            </div>
+            <div className="details__image">
+              <img src="images/ducktape.png" alt="ducktape" id="ducktape" />
+              <img
+                src="images/rockpaperscissors.jpg"
+                alt="rock paper scissors"
+                id="mainpic"
+              />
+              <p className="details__description">
+                ... A Todo List Application
+              </p>
+            </div>
+            <div className="details__github">
+              <a href="">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.9975 0.416321C8.955 0.416321 0 9.40632 0 20.4963C0 29.3663 5.73 36.8913 13.68 39.5488C14.68 39.7338 15.045 39.1138 15.045 38.5813C15.045 38.1038 15.0275 36.8413 15.0175 35.1663C9.455 36.3788 8.28 32.4738 8.28 32.4738C7.3725 30.1538 6.06 29.5363 6.06 29.5363C4.2425 28.2913 6.195 28.3163 6.195 28.3163C8.2025 28.4588 9.2575 30.3863 9.2575 30.3863C11.0425 33.4538 13.94 32.5688 15.08 32.0538C15.26 30.7563 15.7775 29.8713 16.35 29.3688C11.91 28.8613 7.24 27.1388 7.24 19.4463C7.24 17.2538 8.02 15.4613 9.3 14.0563C9.0925 13.5488 8.4075 11.5063 9.495 8.74382C9.495 8.74382 11.175 8.20382 14.995 10.8013C16.59 10.3563 18.3 10.1338 20.0025 10.1263C21.7 10.1363 23.4125 10.3563 25.01 10.8038C28.8275 8.20632 30.505 8.74632 30.505 8.74632C31.595 11.5113 30.91 13.5513 30.705 14.0588C31.9875 15.4638 32.76 17.2563 32.76 19.4488C32.76 27.1613 28.085 28.8588 23.63 29.3563C24.3475 29.9763 24.9875 31.2013 24.9875 33.0738C24.9875 35.7588 24.9625 37.9238 24.9625 38.5813C24.9625 39.1188 25.3225 39.7438 26.3375 39.5463C34.275 36.8863 40 29.3638 40 20.4963C40 9.40632 31.045 0.416321 19.9975 0.416321Z" />
+                </svg>
+                <p>
+                  Github{" "}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.825 5.81596L14.4083 0.191032C14.2316 0.0077761 13.9608 -0.0497489 13.7251 0.0451597C13.4884 0.140984 13.3334 0.370168 13.3334 0.625139V3.33354H13.1251C8.64516 3.33354 5.00018 6.97852 5.00018 11.4584V12.7084C5.00018 12.9983 5.20434 13.24 5.48678 13.306C5.53271 13.3176 5.57848 13.3226 5.62426 13.3226C5.86016 13.3226 6.08599 13.1842 6.19509 12.9668C7.36679 10.6226 9.72257 9.16675 12.3434 9.16675H13.3334V11.875C13.3334 12.1301 13.4884 12.3593 13.7251 12.4542C13.9593 12.55 14.2316 12.4918 14.4083 12.3083L19.825 6.68342C20.0583 6.44096 20.0583 6.05934 19.825 5.81596Z" />
+                    <path d="M17.5 19.9999H2.5002C1.12189 19.9999 0.000228882 18.8784 0.000228882 17.4999V5.83347C0.000228882 4.45516 1.12189 3.3335 2.5002 3.3335H5.00016C5.46097 3.3335 5.83343 3.70596 5.83343 4.16677C5.83343 4.62758 5.46097 5.00004 5.00016 5.00004H2.5002C2.04015 5.00004 1.66677 5.37342 1.66677 5.83347V17.4999C1.66677 17.96 2.04015 18.3333 2.5002 18.3333H17.5C17.9599 18.3333 18.3333 17.96 18.3333 17.4999V10.8334C18.3333 10.3726 18.7057 9.99999 19.1665 9.99999C19.6275 9.99999 20 10.3726 20 10.8334V17.4999C20 18.8784 18.8783 19.9999 17.5 19.9999Z" />
+                  </svg>
+                </p>
+              </a>
             </div>
           </div>
           <div className="liveButton">
@@ -234,48 +586,6 @@ export const Projects = () => {
                 />
               </svg>
             </a>
-          </div>
-          <div className="projects__details">
-            <div className="details__header">
-              <h1>todo app</h1>
-              <div className="details__tags">
-                <p>React</p>
-                <p>HTML</p>
-                <p>SCSS</p>
-              </div>
-            </div>
-            <div className="details__image">
-              <img src="images/ducktape.png" alt="ducktape" />
-              <img
-                src="images/rockpaperscissors.jpg"
-                alt="rock paper scissors"
-              />
-              <p className="details__description">
-                ... A Todo List Application
-              </p>
-            </div>
-            <div className="details__github">
-              <a href="">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.9975 0.416321C8.955 0.416321 0 9.40632 0 20.4963C0 29.3663 5.73 36.8913 13.68 39.5488C14.68 39.7338 15.045 39.1138 15.045 38.5813C15.045 38.1038 15.0275 36.8413 15.0175 35.1663C9.455 36.3788 8.28 32.4738 8.28 32.4738C7.3725 30.1538 6.06 29.5363 6.06 29.5363C4.2425 28.2913 6.195 28.3163 6.195 28.3163C8.2025 28.4588 9.2575 30.3863 9.2575 30.3863C11.0425 33.4538 13.94 32.5688 15.08 32.0538C15.26 30.7563 15.7775 29.8713 16.35 29.3688C11.91 28.8613 7.24 27.1388 7.24 19.4463C7.24 17.2538 8.02 15.4613 9.3 14.0563C9.0925 13.5488 8.4075 11.5063 9.495 8.74382C9.495 8.74382 11.175 8.20382 14.995 10.8013C16.59 10.3563 18.3 10.1338 20.0025 10.1263C21.7 10.1363 23.4125 10.3563 25.01 10.8038C28.8275 8.20632 30.505 8.74632 30.505 8.74632C31.595 11.5113 30.91 13.5513 30.705 14.0588C31.9875 15.4638 32.76 17.2563 32.76 19.4488C32.76 27.1613 28.085 28.8588 23.63 29.3563C24.3475 29.9763 24.9875 31.2013 24.9875 33.0738C24.9875 35.7588 24.9625 37.9238 24.9625 38.5813C24.9625 39.1188 25.3225 39.7438 26.3375 39.5463C34.275 36.8863 40 29.3638 40 20.4963C40 9.40632 31.045 0.416321 19.9975 0.416321Z" />
-                </svg>
-                <p>
-                  Github{" "}
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.825 5.81596L14.4083 0.191032C14.2316 0.0077761 13.9608 -0.0497489 13.7251 0.0451597C13.4884 0.140984 13.3334 0.370168 13.3334 0.625139V3.33354H13.1251C8.64516 3.33354 5.00018 6.97852 5.00018 11.4584V12.7084C5.00018 12.9983 5.20434 13.24 5.48678 13.306C5.53271 13.3176 5.57848 13.3226 5.62426 13.3226C5.86016 13.3226 6.08599 13.1842 6.19509 12.9668C7.36679 10.6226 9.72257 9.16675 12.3434 9.16675H13.3334V11.875C13.3334 12.1301 13.4884 12.3593 13.7251 12.4542C13.9593 12.55 14.2316 12.4918 14.4083 12.3083L19.825 6.68342C20.0583 6.44096 20.0583 6.05934 19.825 5.81596Z" />
-                    <path d="M17.5 19.9999H2.5002C1.12189 19.9999 0.000228882 18.8784 0.000228882 17.4999V5.83347C0.000228882 4.45516 1.12189 3.3335 2.5002 3.3335H5.00016C5.46097 3.3335 5.83343 3.70596 5.83343 4.16677C5.83343 4.62758 5.46097 5.00004 5.00016 5.00004H2.5002C2.04015 5.00004 1.66677 5.37342 1.66677 5.83347V17.4999C1.66677 17.96 2.04015 18.3333 2.5002 18.3333H17.5C17.9599 18.3333 18.3333 17.96 18.3333 17.4999V10.8334C18.3333 10.3726 18.7057 9.99999 19.1665 9.99999C19.6275 9.99999 20 10.3726 20 10.8334V17.4999C20 18.8784 18.8783 19.9999 17.5 19.9999Z" />
-                  </svg>
-                </p>
-              </a>
-            </div>
           </div>
         </div>
       </div>
