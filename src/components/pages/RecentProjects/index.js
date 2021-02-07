@@ -4,6 +4,7 @@ import { HomeSocials } from "../../otherComponents/HomeSocials";
 import { Logo } from "../../otherComponents/Logo";
 import { Nav } from "../../otherComponents/Nav";
 import { ProjectsGrid } from "../../otherComponents/ProjectsGrid";
+import { NavLink } from "react-router-dom";
 
 const StyledRecentProjects = styled.section`
   background-color: ${(props) => props.theme.projectBody};
@@ -120,9 +121,12 @@ export const RecentProjects = () => {
             </a>
           </div>
         </div>
-        <a href="" className="allProjects">
+        <NavLink to="/allprojects" className="allProjects">
           All projects
-        </a>
+        </NavLink>
+        {/* <a href="" className="allProjects">
+          All projects
+        </a> */}
       </div>
     </StyledRecentProjects>
   );
