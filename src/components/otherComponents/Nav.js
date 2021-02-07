@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-scroll";
 import styled from "styled-components";
 
 const StyledNav = styled.ul.attrs({ "data-id": "nav" })`
@@ -11,10 +12,13 @@ const StyledNav = styled.ul.attrs({ "data-id": "nav" })`
     font-weight: 700;
   }
   & li a {
+    display: block;
     color: ${(props) => props.theme.fontColor};
     position: absolute;
     right: -110px;
     transition: all 0.5s ease-in-out;
+    padding: 3px;
+    cursor: pointer;
   }
   & li a .nav_index {
     position: absolute;
@@ -43,7 +47,7 @@ export const Nav = () => {
   return (
     <StyledNav>
       <li>
-        <a href="">
+        <Link to="home" spy={true} smooth={true}>
           <p className="nav_index">00</p>
           <p className="nav_title">HOME</p>
           <svg
@@ -54,10 +58,10 @@ export const Nav = () => {
             <rect width="40" height="4" rx="2" />
             <rect x="39" y="1.64709" width="175" height="0.941176" />
           </svg>
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="">
+        <Link to="projects" spy={true} smooth={true}>
           <p className="nav_index">01</p>
           <p className="nav_title">PORTFOLIO</p>
           <svg
@@ -68,10 +72,10 @@ export const Nav = () => {
             <rect width="40" height="4" rx="2" />
             <rect x="39" y="1.64709" width="175" height="0.941176" />
           </svg>
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="">
+        <Link to="contacts" spy={true} smooth={true}>
           <p className="nav_index">02</p>
           <p className="nav_title">CONTACT</p>
           <svg
@@ -82,7 +86,7 @@ export const Nav = () => {
             <rect width="40" height="4" rx="2" />
             <rect x="39" y="1.64709" width="175" height="0.941176" />
           </svg>
-        </a>
+        </Link>
       </li>
     </StyledNav>
   );

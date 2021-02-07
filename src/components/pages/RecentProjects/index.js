@@ -92,7 +92,7 @@ const StyledRecentProjects = styled.section`
 
 export const RecentProjects = () => {
   return (
-    <StyledRecentProjects>
+    <StyledRecentProjects id="projects">
       <div className="recentProjects__container">
         <Logo />
         <h1>PROJECTS</h1>

@@ -1,4 +1,5 @@
 // import "./style.scss";
+import { Link } from "react-scroll";
 import styled from "styled-components";
 
 const StyledHomeNav = styled.ul`
@@ -14,6 +15,7 @@ const StyledHomeNav = styled.ul`
     color: inherit;
     font-size: 0.8rem;
     font-family: "Roboto", sans-serif;
+    cursor: pointer;
   }
 
   li a:hover {
@@ -41,14 +43,14 @@ export const HomeNav = () => {
         </a>
       </li>
       <li>
-        <a href="#">
+        <Link to="projects" spy={true} smooth={true}>
           <p>Projects</p>
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="#">
+        <Link to="contacts" spy={true} smooth={true}>
           <p>Contact</p>
-        </a>
+        </Link>
       </li>
     </StyledHomeNav>
   );

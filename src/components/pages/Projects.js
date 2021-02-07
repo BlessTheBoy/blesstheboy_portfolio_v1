@@ -513,7 +513,10 @@ export const Projects = () => {
       projectsLength={projectsLength && projectsLength}>
       <div className="projects__container">
         <div className="projects__header">
-          <Logo color={projectTheme?.headerColor} />
+          <Logo
+            color={projectTheme?.headerColor}
+            accent={projectTheme?.accentColor}
+          />
           <div className="projects__header-socials">
             <a
               href="https://twitter.com/BlessTheBoy_"

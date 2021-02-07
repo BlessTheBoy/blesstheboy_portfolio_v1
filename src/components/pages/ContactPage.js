@@ -86,7 +86,7 @@ const StyledContactPage = styled.section`
 `;
 export const ContactPage = () => {
   return (
-    <StyledContactPage>
+    <StyledContactPage id="contacts">
       <div className="contact__container">
         <Logo />
         <div className="contact_content">

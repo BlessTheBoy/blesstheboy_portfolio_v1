@@ -23,6 +23,7 @@ const StyledHome = styled.section`
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    z-index: 1;
   }
 
   .landingContent__container {
@@ -35,6 +36,7 @@ const StyledHome = styled.section`
   }
 
   [data-id="scroll"]{
+    cursor: pointer;
     position: absolute;
     bottom: 2rem;
     left: 50%;
@@ -76,7 +78,7 @@ export const LandingPage = () => {
     });
   }, []);
   return (
-    <StyledHome>
+    <StyledHome id="home">
       <Header ref={hederRef} />
       <main className="landingContent">
         <div className="landingContent__container">
