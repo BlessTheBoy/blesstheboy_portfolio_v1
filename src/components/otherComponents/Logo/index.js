@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledLogo = styled.div.attrs({ "data-id": "logo" })`
     cursor: pointer;
   & svg {
-    fill: ${(props) => props.theme.fontColor};
+    fill: ${(props) => (props.color ? props.color : props.theme.fontColor)};
     object-fit: contain;
     width 120px;
   }
@@ -19,9 +19,9 @@ const StyledLogo = styled.div.attrs({ "data-id": "logo" })`
   }
 `;
 
-export const Logo = () => {
+export const Logo = ({ color }) => {
   return (
-    <StyledLogo className="logo">
+    <StyledLogo className="logo" color={color}>
       <svg
         width="183"
         height="53"
