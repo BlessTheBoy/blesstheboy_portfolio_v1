@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { Logo } from "../otherComponents/Logo";
+import { ProjectLogo } from "../otherComponents/ProjectLogo";
 import { useStateValue } from "../StateProvider";
 
 const rotate = keyframes`
@@ -513,10 +513,11 @@ export const Projects = () => {
       projectsLength={projectsLength && projectsLength}>
       <div className="projects__container">
         <div className="projects__header">
-          <Logo
+          <ProjectLogo
             color={projectTheme?.headerColor}
             accent={projectTheme?.accentColor}
           />
+
           <div className="projects__header-socials">
             <a
               href="https://twitter.com/BlessTheBoy_"
