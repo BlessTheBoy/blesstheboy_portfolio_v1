@@ -131,7 +131,8 @@ const StyledProjects = styled.div`
     left: 50%;
     transform: translateX(-50%);
     transition: height 0.3s ease-in-out;
-    height: ${(props) => (props.index / props.projectsLength) * 150 + "px"};
+    height: ${(props) =>
+      ((props.index + 1) / props.projectsLength) * 150 + "px"};
     width: 3px;
     background: ${(props) => props.projectTheme?.progessBar};
   }
@@ -222,7 +223,7 @@ const StyledProjects = styled.div`
 
   .projects__details {
     width: 60%;
-    margin: 0 auto;
+    margin: 1rem auto 0;
     color: ${(props) => props.projectTheme?.fontColor};
   }
 
@@ -258,7 +259,7 @@ const StyledProjects = styled.div`
 
   .details__image {
     position: relative;
-    margin: 3rem auto 0;
+    margin: 2rem auto 0;
     text-align: center;
     width: 80%;
     filter: drop-shadow(-20px 25px 12px rgba(0, 0, 0, 0.25));
@@ -477,10 +478,11 @@ export const Projects = () => {
   useEffect(() => {
     setProjectTheme(projectThemes[themeIndex]);
     setLiveStroke(liveCircle.current.getTotalLength());
+    document.addEventListener("keydown", keydownHandler);
   }, []);
-  useEffect(() => {
-    setProjectTheme(projectThemes[themeIndex]);
-  }, [themeIndex]);
+  // useEffect(() => {
+  //   setProjectTheme(projectThemes[themeIndex]);
+  // }, [themeIndex]);
 
   const nextProject = () => {
     console.log("next project");
@@ -489,6 +491,7 @@ export const Projects = () => {
     });
     let newIndex = themeIndex + 1 !== projectThemes.length ? themeIndex + 1 : 0;
     setThemeIndex(newIndex);
+    setProjectTheme(projectThemes[newIndex]);
   };
   const prevProject = () => {
     dispatch({
@@ -496,6 +499,11 @@ export const Projects = () => {
     });
     let newIndex = themeIndex === 0 ? projectThemes.length - 1 : themeIndex - 1;
     setThemeIndex(newIndex);
+    setProjectTheme(projectThemes[newIndex]);
+  };
+  const keydownHandler = (e) => {
+    if (e.keyCode === 37) prevProject();
+    if (e.keyCode === 39) nextProject();
   };
   return (
     <StyledProjects
