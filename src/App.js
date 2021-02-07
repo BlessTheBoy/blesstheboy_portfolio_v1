@@ -15,6 +15,7 @@ import {
   Switch,
 } from "react-router-dom";
 import { Projects } from "./components/pages/Projects";
+import { useEffect } from "react";
 
 function App() {
   const [{ theme }] = useStateValue();

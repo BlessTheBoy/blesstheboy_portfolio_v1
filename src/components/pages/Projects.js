@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Logo } from "../otherComponents/Logo";
+import { useStateValue } from "../StateProvider";
 
 const rotate = keyframes`
 from{
@@ -34,9 +35,9 @@ const StyledProjects = styled.div`
   overflow: hidden;
   padding: 1.5rem 4rem 0.5rem;
   font-size: 1rem;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 
   &::after {
     content: "";
@@ -51,7 +52,8 @@ const StyledProjects = styled.div`
   }
 
   .projects__container {
-    // flex: 1;
+    flex: 1;
+    height: 100%;
     // overflow: hidden;
     max-height: 100%;
     overflow-y: hidden;
@@ -90,10 +92,14 @@ const StyledProjects = styled.div`
     height: auto;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .projects__progress {
     position: absolute;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -146,11 +152,11 @@ const StyledProjects = styled.div`
     width: 90px;
   }
   .prev {
-    visibility: ${(props) => (props.index > 1 ? "visible" : "hidden")};
+    visibility: ${(props) => (props.index > 0 ? "visible" : "hidden")};
   }
   .next {
     visibility: ${(props) =>
-      props.index !== props.projectsLength ? "visible" : "hidden"};
+      props.index + 1 !== props.projectsLength ? "visible" : "hidden"};
   }
   .prev:hover,
   .next:hover {
@@ -379,6 +385,10 @@ const StyledProjects = styled.div`
 `;
 
 export const Projects = () => {
+  const [
+    { projectsLength, projectDetails, projectIndex },
+    dispatch,
+  ] = useStateValue();
   const projectThemes = [
     {
       backgroundColor: "#302f30",
@@ -447,31 +457,51 @@ export const Projects = () => {
       navColor: "#CCC",
     },
   ];
+  const [themeIndex, setThemeIndex] = useState(0);
 
   const [projectTheme, setProjectTheme] = useState();
   const [liveStroke, setLiveStroke] = useState(null);
   const liveCircle = useRef();
-  const [projectDetails, setProjectDetails] = useState({
-    index: 13,
-    title: "Rock Paper Scissors",
-    tags: ["React", "HTML", "SCSS"],
-    imgUrl: "rockpaperscissors.jpg",
-    description: "A fun game of Rock Paper Scissors",
-    gitRepo: "rock-paper-scissors",
-    liveUrl: "https://rock-paper-scissors-d464b.firebaseapp.com/",
-  });
-  const projectsLength = 68;
+  // const [projectDetails, setProjectDetails] = useState({
+  //   index: 13,
+  //   title: "Rock Paper Scissors",
+  //   tags: ["React", "HTML", "SCSS"],
+  //   imgUrl: "rockpaperscissors.jpg",
+  //   description: "A fun game of Rock Paper Scissors",
+  //   gitRepo: "rock-paper-scissors",
+  //   liveUrl: "https://rock-paper-scissors-d464b.firebaseapp.com/",
+  // });
+  // const projectsLength = 68;
 
   useEffect(() => {
-    setProjectTheme(projectThemes[5]);
+    setProjectTheme(projectThemes[themeIndex]);
     setLiveStroke(liveCircle.current.getTotalLength());
   }, []);
+  useEffect(() => {
+    setProjectTheme(projectThemes[themeIndex]);
+  }, [themeIndex]);
+
+  const nextProject = () => {
+    console.log("next project");
+    dispatch({
+      type: "NEXT_PROJECT",
+    });
+    let newIndex = themeIndex + 1 !== projectThemes.length ? themeIndex + 1 : 0;
+    setThemeIndex(newIndex);
+  };
+  const prevProject = () => {
+    dispatch({
+      type: "PREV_PROJECT",
+    });
+    let newIndex = themeIndex === 0 ? projectThemes.length - 1 : themeIndex - 1;
+    setThemeIndex(newIndex);
+  };
   return (
     <StyledProjects
       projectTheme={projectTheme}
       liveCircleLength={liveStroke}
-      index={projectDetails?.index}
-      projectsLength={projectsLength}>
+      index={projectIndex && projectIndex}
+      projectsLength={projectsLength && projectsLength}>
       <div className="projects__container">
         <div className="projects__header">
           <Logo color={projectTheme?.headerColor} />
@@ -504,16 +534,18 @@ export const Projects = () => {
         </div>
         <div className="projects__content">
           <div className="projects__progress">
-            <p className="currentProject">{projectDetails.index}</p>
+            <p className="currentProject">
+              {projectIndex !== null && `${projectIndex + 1}`}
+            </p>
             <div className="progress">
               <div className="progress__stroke"></div>
               <div className="progress__bar"></div>
             </div>
 
-            <p className="totalProjects">{projectsLength}</p>
+            <p className="totalProjects">{projectsLength && projectsLength}</p>
           </div>
           <div className="projects__controls">
-            <div className="prev">
+            <div className="prev" onClick={() => prevProject()}>
               <div className="prevArr">
                 <svg
                   width="26"
@@ -533,7 +565,7 @@ export const Projects = () => {
                 <path d="M0 2H50" stroke-width="3" />
               </svg>
             </div>
-            <div className="next">
+            <div className="next" onClick={() => nextProject()}>
               <svg
                 width="50"
                 viewBox="0 0 50 3"
@@ -556,9 +588,9 @@ export const Projects = () => {
           </div>
           <div className="projects__details">
             <div className="details__header">
-              <h1>{projectDetails.title}</h1>
+              <h1>{projectDetails?.title}</h1>
               <div className="details__tags">
-                {projectDetails.tags.map((tag) => (
+                {projectDetails?.tags.map((tag) => (
                   <p>{tag}</p>
                 ))}
               </div>
@@ -566,17 +598,17 @@ export const Projects = () => {
             <div className="details__image">
               <img src="images/ducktape.png" alt="ducktape" id="ducktape" />
               <img
-                src={`images/${projectDetails.imgUrl}`}
-                alt={projectDetails.title}
+                src={`images/${projectDetails?.imgUrl}`}
+                alt={projectDetails?.title}
                 id="mainpic"
               />
               <p className="details__description">
-                ... {projectDetails.description}
+                ... {projectDetails?.description}
               </p>
             </div>
             <div className="details__github">
               <a
-                href={`https://github.com/BlessTheBoy/${projectDetails.gitRepo}`}>
+                href={`https://github.com/BlessTheBoy/${projectDetails?.gitRepo}`}>
                 <svg
                   width="40"
                   height="40"
@@ -598,7 +630,7 @@ export const Projects = () => {
             </div>
           </div>
           <div className="liveButton">
-            <a href={projectDetails.liveUrl}>
+            <a href={projectDetails?.liveUrl}>
               <svg
                 width="173"
                 viewBox="0 0 173 168"
