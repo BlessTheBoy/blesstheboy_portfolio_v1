@@ -38,6 +38,7 @@ const StyledProjects = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  transition: background-color 0.3s ease-in-out;
 
   &::after {
     content: "";
@@ -129,7 +130,7 @@ const StyledProjects = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    transition: all 0.5s ease-in-out;
+    transition: height 0.3s ease-in-out;
     height: ${(props) => (props.index / props.projectsLength) * 150 + "px"};
     width: 3px;
     background: ${(props) => props.projectTheme?.progessBar};
