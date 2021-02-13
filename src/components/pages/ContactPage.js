@@ -12,6 +12,7 @@ const StyledContactPage = styled.section`
   overflow: hidden;
   padding: 1.5rem 4rem 0.5rem;
   font-size: 1rem;
+  scroll-snap-align: start;
 
   & .contact__container{
     width: 100%

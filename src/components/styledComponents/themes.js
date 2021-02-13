@@ -41,4 +41,9 @@ export const GlobalStyles = createGlobalStyle`
       display: none;
     }
   }
+  @media screen and (min-width: 750px){
+    .mobile{
+      display: none;
+    }
+  }
 `;

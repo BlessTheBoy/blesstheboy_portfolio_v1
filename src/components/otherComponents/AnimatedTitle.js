@@ -119,7 +119,7 @@ export const AnimatedTitle = () => {
     setLengths(tempLength);
   }, [window.innerWidth]);
   return (
-    <StyledAnimatedTitle lengthsArray={lengths}>
+    <StyledAnimatedTitle lengthsArray={lengths} className="desktop">
       <svg
         id="role"
         ref={roleRef}

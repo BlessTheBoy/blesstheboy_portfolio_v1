@@ -15,6 +15,7 @@ const StyledRecentProjects = styled.section`
   overflow: hidden;
   padding: 1.5rem 4rem 0.5rem;
   font-size: 1rem;
+  scroll-snap-align: start;
 
   & .recentProjects__container{
     width: 100%
