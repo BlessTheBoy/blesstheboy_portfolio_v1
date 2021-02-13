@@ -92,7 +92,7 @@ export const LandingText = () => {
   }, []);
   return (
     <StyledLandingText className="landingText">
-      <img src="images/tagtop.png" alt="" id="tagtop" />
+      <img src="images/tagtop.png" alt="" id="tagtop" className="desktop" />
       <p className="landingText__intro">
         <span className="intro_cover"></span> My name is Faruq, I’m a
       </p>
@@ -109,7 +109,12 @@ export const LandingText = () => {
         </p>
         <HomeSocials />
       </div>
-      <img src="images/tagbottom.png" alt="" id="tagbottom" />
+      <img
+        src="images/tagbottom.png"
+        alt=""
+        id="tagbottom"
+        className="desktop"
+      />
     </StyledLandingText>
   );
 };

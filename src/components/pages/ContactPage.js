@@ -23,6 +23,7 @@ const StyledContactPage = styled.section`
     font-size: 4rem;
     font-weight: 400;
     font-family: "Bebas Neue", cursive;
+    color: ${(props) => props.theme.accentColor};
   }
 
   & .contactList {
@@ -158,7 +159,7 @@ export const ContactPage = () => {
             </li>
           </ul>
         </div>
-        <Nav />
+        <Nav active="contact" />
         <div className="footer">
           <svg
             width="183"

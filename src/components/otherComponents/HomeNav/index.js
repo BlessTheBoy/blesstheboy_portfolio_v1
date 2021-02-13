@@ -36,7 +36,7 @@ const StyledHomeNav = styled.ul`
 
 export const HomeNav = () => {
   return (
-    <StyledHomeNav className="homeNav">
+    <StyledHomeNav className="homeNav desktop">
       <li className="active">
         <a href="#">
           <p>&lt; Home /&gt;</p>

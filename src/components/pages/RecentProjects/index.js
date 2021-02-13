@@ -27,6 +27,7 @@ const StyledRecentProjects = styled.section`
     font-weight: 700;
     font-family: 'Bebas Neue', cursive;
     letter-spacing: .2em;
+    color: ${(props) => props.theme.accentColor};
   }
 
   [data-id="projectsGrid"]{
@@ -99,7 +100,7 @@ export const RecentProjects = () => {
         <ProjectsGrid />
         {/* <HomeSocials /> */}
         <div className="recentProjects__nav">
-          <Nav />
+          <Nav active="projects" />
           <div className="socials">
             <a href="https://twitter.com/BlessTheBoy_">
               <svg

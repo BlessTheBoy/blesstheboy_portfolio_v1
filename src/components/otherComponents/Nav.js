@@ -41,9 +41,15 @@ const StyledNav = styled.ul.attrs({ "data-id": "nav" })`
       fill: ${(props) => props.theme.accentColor};
     }
   }
+  & li a.active {
+    color: ${(props) => props.theme.accentColor};
+    svg {
+      fill: ${(props) => props.theme.accentColor};
+    }
+  }
 `;
 
-export const Nav = () => {
+export const Nav = ({ active }) => {
   return (
     <StyledNav>
       <li>
@@ -61,7 +67,11 @@ export const Nav = () => {
         </Link>
       </li>
       <li>
-        <Link to="projects" spy={true} smooth={true}>
+        <Link
+          to="projects"
+          className={active === "projects" ? "active" : ""}
+          spy={true}
+          smooth={true}>
           <p className="nav_index">01</p>
           <p className="nav_title">PORTFOLIO</p>
           <svg
@@ -75,7 +85,11 @@ export const Nav = () => {
         </Link>
       </li>
       <li>
-        <Link to="contacts" spy={true} smooth={true}>
+        <Link
+          to="contacts"
+          className={active === "contact" ? "active" : ""}
+          spy={true}
+          smooth={true}>
           <p className="nav_index">02</p>
           <p className="nav_title">CONTACT</p>
           <svg

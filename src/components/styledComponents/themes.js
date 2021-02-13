@@ -35,4 +35,10 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: initial;
   }
+
+  @media screen and (max-width: 750px){
+    .desktop{
+      display: none;
+    }
+  }
 `;

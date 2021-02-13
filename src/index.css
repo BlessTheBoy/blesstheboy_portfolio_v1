@@ -9,6 +9,12 @@ body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
+@media screen and (max-width: 750px) {
+  body {
+    overflow-y: scroll;
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

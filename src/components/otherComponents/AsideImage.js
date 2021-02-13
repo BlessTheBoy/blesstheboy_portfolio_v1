@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { useStateValue } from "../StateProvider";
-const imgwidth = "40";
+const imgwidth = "60";
 
 const rotateAnim = (x, y, s) => keyframes`
 0%  { -webkit-transform: rotate(0deg) translateX(${x}px) translateY(${y}px) rotate(0deg) scale(${s}); z-index: 5;}
@@ -160,7 +160,7 @@ export const AsideImage = () => {
     });
   }, []);
   return (
-    <StyledAsideImage ref={containerRef}>
+    <StyledAsideImage ref={containerRef} className="desktop">
       <div id="sun-wrap">
         <svg
           ref={sun}
