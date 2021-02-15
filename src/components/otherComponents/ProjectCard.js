@@ -40,6 +40,22 @@ const StyledProjectCard = styled.div`
 
     [data-id="cardlinks"] {
       opacity: 1;
+
+      & a {
+        color: black;
+
+        & svg {
+          fill: black;
+        }
+
+        &:hover {
+          color: white;
+    
+          & svg {
+            fill: white;
+          }
+        }
+      }
     }
 
     & .projectCard_name {
@@ -92,17 +108,7 @@ const StyledProjectCard = styled.div`
     transition: all 0.5s ease-in-out;
     font-size: .9em;
   }
-
-  [data-id="cardlinks"] {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    z-index: 3;
-    opacity: 0;    
-    transition: all 0.5s ease-in-out;
-  }
-
+  
   & img {
     object-fit: contain;
     width: 90%;
@@ -121,9 +127,72 @@ const StyledProjectCard = styled.div`
     width: ${(props) => (props.size === "big" ? "300px" : "240px")};
     height: ${(props) => (props.size === "big" ? "300px" : "240px")};
   }
-  @media only screen and (max-width: 750px){    
+  @media only screen and (max-width: 800px){    
     width: ${(props) => (props.size === "big" ? "270px" : "240px")};
     height: ${(props) => (props.size === "big" ? "270px" : "240px")};
+  }
+  @media only screen and (max-width: 750px){    
+    width: 100%;
+    max-width: 500px;
+    height: fit-content;
+    background: ${(props) => props.theme.projectCardBody};
+    font-size: .9em;
+    margin: 0 auto .35rem;
+
+    & .projectCard_content {
+      padding: 1.2rem 1.5rem;
+      padding-bottom: 0;
+    }
+
+    .projectCard_header{
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: .3em;
+    }
+    .projectCard_name{
+      width: 100%;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      color:  ${(props) => props.theme.fontColor};
+    }
+    .projectCard_tags{
+      width: 100%;
+      max-width: 100%;
+      justify-content: flex-start;
+
+      & figure {        
+        margin-left: 0em;
+        margin-right: 0.5em;
+      }
+    }
+
+    & .projectCard_description {
+      color:  ${(props) => props.theme.projectCardFont};
+      margin-bottom: .8rem;
+    }
+
+    [data-id="cardlinks"] {
+      position: relative;
+      z-index: 3;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .projectCard_image{
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 750px){
+    [data-id="cardlinks"] {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      z-index: 3;
+      opacity: 0;    
+      transition: all 0.5s ease-in-out;
+    }
   }
 `;
 

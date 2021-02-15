@@ -72,7 +72,8 @@ const StyledHome = styled.section`
       padding: 0rem 2.5rem 1.5rem;
     }
   }
-  @media only screen and (max-width: 750px){
+  @media only screen and (max-width: 750px){    
+  background-color: ${(props) => props.theme.bodyMobile};
     .landingContent {
       padding: 0rem 1rem 1.5rem;
     }
