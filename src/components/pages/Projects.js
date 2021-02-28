@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { ProjectLogo } from "../otherComponents/ProjectLogo";
 import { useStateValue } from "../StateProvider";
@@ -39,6 +40,11 @@ const StyledProjects = styled.div`
   justify-content: center;
   align-items: flex-start;
   transition: background-color 0.3s ease-in-out;
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &::after {
     content: "";
@@ -49,7 +55,13 @@ const StyledProjects = styled.div`
     right: 0px;
     bottom: 0px;
     left: 0px;
+    width: 100%;
+    height: 100%;
     opacity: ${(props) => props.projectTheme?.backgroundOpacity};
+  }
+
+  .pmobile {
+    display: none;
   }
 
   .projects__container {
@@ -245,16 +257,26 @@ const StyledProjects = styled.div`
     display: flex;
     margin-bottom: 0.4em;
     margin-top: 0.2em;
-  }
-  .details__tags p {
-    font-size: 0.8em;
-    height: fit-content;
-    padding: 0.2em 0.5em;
-    color: #a1a2a6;
-    background-color: #4d4d52;
-    border-radius: 4px;
-    margin-left: 0.5em;
-    margin-bottom: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+
+    &-tag {
+      display: flex;
+
+      & p {
+        font-size: 0.8em;
+        height: fit-content;
+        padding: 0.2em 0.5em;
+        color: #a1a2a6;
+        background-color: #4d4d52;
+        border-radius: 4px;
+        margin-left: 0.5em;
+        margin-bottom: 0.5em;
+      }
+    }
+    .details__github {
+      display: none;
+    }
   }
 
   .details__image {
@@ -384,9 +406,136 @@ const StyledProjects = styled.div`
   .stableCircle {
     stroke: ${(props) => props.projectTheme?.progessStroke};
   }
+  @media only screen and (max-width: 950px) {
+    padding: 1.5rem 2rem 0.5rem;
+
+    .details__header h1 {
+      font-size: 3em;
+      letter-spacing: 3px;
+      margin-right: 3rem;
+      line-height: 1;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    .projects__controls {
+      width: 94%;
+      left: 3%;
+    }
+    .prev,
+    .next {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 90px;
+
+      & > svg {
+        width: 30px;
+        height: 4px;
+      }
+    }
+    .prevArr svg,
+    .nextArr svg {
+      width: 15px;
+    }
+    .projects__details {
+      width: 74%;
+      margin: 0rem auto 0;
+    }
+    .liveButton a svg {
+      width: 90px;
+    }
+    .details__tags p {
+      font-size: 0.7em;
+    }
+  }
+  @media only screen and (max-width: 550px) {
+    padding: 1rem 0rem;
+
+    .pmobile {
+      display: block;
+    }
+    .pdesktop {
+      display: none;
+    }
+    .projects__content {
+      flex-direction: column;
+      align-items: space-evenly;
+    }
+    .projects__header {
+      padding: 0 1rem;
+    }
+    .projects__header-back {
+      cursor: pointer;
+
+      & svg {
+        fill: ${(props) => props.projectTheme?.headerColor};
+      }
+    }
+    .projects__header-back:hover svg {
+      fill: ${(props) => props.projectTheme?.accentColor};
+    }
+    .projects__header-socials a svg {
+      width: 20px;
+    }
+    .projects__header-socials a {
+      margin-left: 0;
+    }
+
+    .projects__details {
+      width: 86%;
+      margin: 0rem auto 3rem;
+      filter: drop-shadow(-7px 8px 5px rgba(0, 0, 0, 0.25));
+    }
+
+    .details__image {
+      width: 92%;
+      filter: none;
+    }
+
+    .details__tags {
+      // flex: 1;
+      width: 100%;
+      justify-content: space-between;
+
+      & p {
+        font-size: 0.6em;
+      }
+      .details__github {
+        margin: 0;
+        display: flex;
+        & a svg {
+          width: 18px;
+          margin-right: 0.3rem;
+        }
+        & a p {
+          font-size: 0.7em;
+          & svg {
+            width: 10px;
+          }
+        }
+      }
+    }
+    .details__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .projects__progress {
+      left: 10px;
+    }
+    .projects__progress p {
+      color: ${(props) => props.projectTheme?.fontColor};
+      font-size: 0.7rem;
+    }
+    .liveButton {
+      position: initial;
+      bottom: 5%;
+      right: 10%;
+    }
+  }
 `;
 
 export const Projects = () => {
+  let history = useHistory();
   const [
     { projectsLength, projectDetails, projectIndex },
     dispatch,
@@ -513,6 +662,22 @@ export const Projects = () => {
       projectsLength={projectsLength && projectsLength}>
       <div className="projects__container">
         <div className="projects__header">
+          <div
+            className="projects__header-back pmobile"
+            onClick={() => history.goBack()}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M20 11H7.8L13.4 5.4L12 4L4 12L12 20L13.4 18.6L7.8 13H20V11Z"
+              />
+            </svg>
+          </div>
           <ProjectLogo
             color={projectTheme?.headerColor}
             accent={projectTheme?.accentColor}
@@ -532,6 +697,7 @@ export const Projects = () => {
               </svg>
             </a>
             <a
+              className="pdesktop"
               href="https://github.com/BlessTheBoy"
               target="_blank"
               rel="noopener noreferrer">
@@ -603,9 +769,33 @@ export const Projects = () => {
             <div className="details__header">
               <h1>{projectDetails?.title}</h1>
               <div className="details__tags">
-                {projectDetails?.tags.map((tag) => (
-                  <p>{tag}</p>
-                ))}
+                <div className="details__tags-tag">
+                  {projectDetails?.tags.map((tag) => (
+                    <p>{tag}</p>
+                  ))}
+                </div>
+                <div className="details__github pmobile">
+                  <a
+                    href={`https://github.com/BlessTheBoy/${projectDetails?.gitRepo}`}>
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19.9975 0.416321C8.955 0.416321 0 9.40632 0 20.4963C0 29.3663 5.73 36.8913 13.68 39.5488C14.68 39.7338 15.045 39.1138 15.045 38.5813C15.045 38.1038 15.0275 36.8413 15.0175 35.1663C9.455 36.3788 8.28 32.4738 8.28 32.4738C7.3725 30.1538 6.06 29.5363 6.06 29.5363C4.2425 28.2913 6.195 28.3163 6.195 28.3163C8.2025 28.4588 9.2575 30.3863 9.2575 30.3863C11.0425 33.4538 13.94 32.5688 15.08 32.0538C15.26 30.7563 15.7775 29.8713 16.35 29.3688C11.91 28.8613 7.24 27.1388 7.24 19.4463C7.24 17.2538 8.02 15.4613 9.3 14.0563C9.0925 13.5488 8.4075 11.5063 9.495 8.74382C9.495 8.74382 11.175 8.20382 14.995 10.8013C16.59 10.3563 18.3 10.1338 20.0025 10.1263C21.7 10.1363 23.4125 10.3563 25.01 10.8038C28.8275 8.20632 30.505 8.74632 30.505 8.74632C31.595 11.5113 30.91 13.5513 30.705 14.0588C31.9875 15.4638 32.76 17.2563 32.76 19.4488C32.76 27.1613 28.085 28.8588 23.63 29.3563C24.3475 29.9763 24.9875 31.2013 24.9875 33.0738C24.9875 35.7588 24.9625 37.9238 24.9625 38.5813C24.9625 39.1188 25.3225 39.7438 26.3375 39.5463C34.275 36.8863 40 29.3638 40 20.4963C40 9.40632 31.045 0.416321 19.9975 0.416321Z" />
+                    </svg>
+                    <p>
+                      Github{" "}
+                      <svg
+                        width="20"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.825 5.81596L14.4083 0.191032C14.2316 0.0077761 13.9608 -0.0497489 13.7251 0.0451597C13.4884 0.140984 13.3334 0.370168 13.3334 0.625139V3.33354H13.1251C8.64516 3.33354 5.00018 6.97852 5.00018 11.4584V12.7084C5.00018 12.9983 5.20434 13.24 5.48678 13.306C5.53271 13.3176 5.57848 13.3226 5.62426 13.3226C5.86016 13.3226 6.08599 13.1842 6.19509 12.9668C7.36679 10.6226 9.72257 9.16675 12.3434 9.16675H13.3334V11.875C13.3334 12.1301 13.4884 12.3593 13.7251 12.4542C13.9593 12.55 14.2316 12.4918 14.4083 12.3083L19.825 6.68342C20.0583 6.44096 20.0583 6.05934 19.825 5.81596Z" />
+                        <path d="M17.5 19.9999H2.5002C1.12189 19.9999 0.000228882 18.8784 0.000228882 17.4999V5.83347C0.000228882 4.45516 1.12189 3.3335 2.5002 3.3335H5.00016C5.46097 3.3335 5.83343 3.70596 5.83343 4.16677C5.83343 4.62758 5.46097 5.00004 5.00016 5.00004H2.5002C2.04015 5.00004 1.66677 5.37342 1.66677 5.83347V17.4999C1.66677 17.96 2.04015 18.3333 2.5002 18.3333H17.5C17.9599 18.3333 18.3333 17.96 18.3333 17.4999V10.8334C18.3333 10.3726 18.7057 9.99999 19.1665 9.99999C19.6275 9.99999 20 10.3726 20 10.8334V17.4999C20 18.8784 18.8783 19.9999 17.5 19.9999Z" />
+                      </svg>
+                    </p>
+                  </a>
+                </div>
               </div>
             </div>
             <div className="details__image">
@@ -619,7 +809,7 @@ export const Projects = () => {
                 ... {projectDetails?.description}
               </p>
             </div>
-            <div className="details__github">
+            <div className="details__github pdesktop">
               <a
                 href={`https://github.com/BlessTheBoy/${projectDetails?.gitRepo}`}>
                 <svg
