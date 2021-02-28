@@ -6,6 +6,7 @@ import { Header } from "../../otherComponents/Header";
 import { LandingText } from "../../otherComponents/LandingText";
 import { ScrollIcon } from "../../otherComponents/ScrollIcon";
 import { useStateValue } from "../../StateProvider";
+import { ScrollIconMobile } from "../../otherComponents/ScrollIconMobile";
 
 const StyledHome = styled.section`
   background-color: ${(props) => props.theme.body};
@@ -15,6 +16,7 @@ const StyledHome = styled.section`
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  scroll-snap-align: start;
 
   .landingContent {
     padding: 0rem 4rem 1.5rem;
@@ -43,6 +45,14 @@ const StyledHome = styled.section`
     z-index: 5;
     width: 30px;
   }
+  [data-id="scrollmobile"]{
+    cursor: pointer;
+    position: absolute;
+    bottom: 2rem;
+    left: calc(50% - 12px);
+    z-index: 5;
+    width: 25px;
+  }
   [data-id="asideImage"]{
     position: absolute;
     right: 4rem;
@@ -62,19 +72,37 @@ const StyledHome = styled.section`
       padding: 0rem 2.5rem 1.5rem;
     }
   }
+  @media only screen and (max-width: 750px){    
+  background-color: ${(props) => props.theme.bodyMobile};
+    .landingContent {
+      padding: 0rem 1rem 1.5rem;
+    }
+    [data-id="asideImage"]{
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 550px){
+    .landingContent {
+      padding: 0rem .5rem 1.5rem;
+    }
+    [data-id="asideImage"]{
+      display: none;
+    }
+  }
 `;
 
 export const LandingPage = () => {
   const [{ theme }, dispatch] = useStateValue();
   const hederRef = createRef();
   const scrollRef = createRef();
+  const scrollMobileRef = createRef();
 
   useEffect(() => {
     console.log(hederRef.current, scrollRef.current);
-    gsap.from([hederRef.current, scrollRef.current], {
+    gsap.from([hederRef.current, scrollRef.current, scrollMobileRef?.current], {
       opacity: 0,
-      duration: 4.5,
-      delay: 3.5,
+      duration: 4.3,
+      delay: 4,
     });
   }, []);
   return (
@@ -87,6 +115,7 @@ export const LandingPage = () => {
         </div>
       </main>
       <ScrollIcon ref={scrollRef} />
+      <ScrollIconMobile ref={scrollMobileRef} />
     </StyledHome>
   );
 };
