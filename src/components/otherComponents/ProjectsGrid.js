@@ -79,6 +79,7 @@ export const ProjectsGrid = () => {
           size,
         }) => (
           <ProjectCard
+            key={name}
             name={name}
             size={size}
             description={description}

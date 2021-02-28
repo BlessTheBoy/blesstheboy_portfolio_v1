@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const StyledProjectLogo = styled.div.attrs({ "data-id": "logo" })`
     cursor: pointer;

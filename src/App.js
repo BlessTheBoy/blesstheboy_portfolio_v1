@@ -8,14 +8,8 @@ import { useStateValue } from "./components/StateProvider";
 import { LandingPage } from "./components/pages/LandingPage";
 import { RecentProjects } from "./components/pages/RecentProjects";
 import { ContactPage } from "./components/pages/ContactPage";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Projects } from "./components/pages/Projects";
-import { useEffect } from "react";
 
 function App() {
   const [{ theme }] = useStateValue();

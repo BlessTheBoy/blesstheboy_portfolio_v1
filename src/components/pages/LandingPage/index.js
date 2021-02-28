@@ -1,11 +1,11 @@
-import React, { createRef, useEffect, useRef } from "react";
+import React, { createRef, useEffect } from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { AsideImage } from "../../otherComponents/AsideImage";
 import { Header } from "../../otherComponents/Header";
 import { LandingText } from "../../otherComponents/LandingText";
 import { ScrollIcon } from "../../otherComponents/ScrollIcon";
-import { useStateValue } from "../../StateProvider";
+// import { useStateValue } from "../../StateProvider";
 import { ScrollIconMobile } from "../../otherComponents/ScrollIconMobile";
 
 const StyledHome = styled.section`
@@ -92,19 +92,19 @@ const StyledHome = styled.section`
 `;
 
 export const LandingPage = () => {
-  const [{ theme }, dispatch] = useStateValue();
+  // const [{ theme }, dispatch] = useStateValue();
   const hederRef = createRef();
   const scrollRef = createRef();
   const scrollMobileRef = createRef();
 
   useEffect(() => {
-    console.log(hederRef.current, scrollRef.current);
+    // console.log(hederRef.current, scrollRef.current);
     gsap.from([hederRef.current, scrollRef.current, scrollMobileRef?.current], {
       opacity: 0,
       duration: 4.3,
       delay: 4,
     });
-  }, []);
+  }, [hederRef, scrollMobileRef, scrollRef]);
   return (
     <StyledHome id="home">
       <Header ref={hederRef} />

@@ -220,7 +220,7 @@ export const ProjectCard = ({
           <h4 className="projectCard_name">{name.toUpperCase()}</h4>
           <div className="projectCard_tags">
             {tags.map((tag) => (
-              <figure>{tag}</figure>
+              <figure key={tag}>{tag}</figure>
             ))}
           </div>
         </div>

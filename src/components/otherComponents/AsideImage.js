@@ -197,10 +197,10 @@ export const AsideImage = () => {
               r="1"
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(601.5 741.5) rotate(-112.994) scale(700.13)">
-              <stop stop-color={theme === "dark" ? "#888888" : "#AEAEAE"} />
+              <stop stopColor={theme === "dark" ? "#888888" : "#AEAEAE"} />
               <stop
                 offset="1"
-                stop-color={theme === "dark" ? "#333333" : "#EEEEEE"}
+                stopColor={theme === "dark" ? "#333333" : "#EEEEEE"}
               />
             </radialGradient>
           </defs>

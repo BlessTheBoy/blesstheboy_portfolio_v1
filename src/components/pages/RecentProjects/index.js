@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { HomeSocials } from "../../otherComponents/HomeSocials";
+// import { HomeSocials } from "../../otherComponents/HomeSocials";
 import { Logo } from "../../otherComponents/Logo";
 import { Nav } from "../../otherComponents/Nav";
 import { ProjectsGrid } from "../../otherComponents/ProjectsGrid";

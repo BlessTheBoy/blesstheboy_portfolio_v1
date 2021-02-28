@@ -473,6 +473,9 @@ const StyledProjects = styled.div`
     .projects__header {
       padding: 0 1rem;
     }
+    .details__header h1 {
+      font-size: 3.2em;
+    }
     .projects__header-back {
       cursor: pointer;
 
@@ -492,7 +495,7 @@ const StyledProjects = styled.div`
 
     .projects__details {
       width: 86%;
-      margin: 2rem auto 3rem;
+      margin: 1.5rem auto 3rem;
       filter: drop-shadow(-7px 8px 5px rgba(0, 0, 0, 0.25));
     }
 
@@ -537,7 +540,7 @@ const StyledProjects = styled.div`
     }
     .liveButton {
       // position: initial;
-      bottom: 12%;
+      bottom: 10%;
       right: 50%;
       transform: translate(50%, 50%);
     }
@@ -546,10 +549,14 @@ const StyledProjects = styled.div`
       transform: translate(50%, 50%) scale(1.1);
     }
     .projects__controls {
-      bottom: 12%;
+      bottom: 10%;
       left: 10%;
       width: 80%;
       margin: 0 auto;
+    }
+    .details__descriptionm {
+      font-size: 0.8rem;
+      margin-top: 1rem;
     }
   }
 `;
@@ -654,7 +661,7 @@ export const Projects = () => {
   // }, [themeIndex]);
 
   const nextProject = () => {
-    console.log("next project");
+    // console.log("next project");
     dispatch({
       type: "NEXT_PROJECT",
     });
@@ -692,8 +699,8 @@ export const Projects = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M20 11H7.8L13.4 5.4L12 4L4 12L12 20L13.4 18.6L7.8 13H20V11Z"
               />
             </svg>
@@ -761,7 +768,7 @@ export const Projects = () => {
                 viewBox="0 0 50 3"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 2H50" stroke-width="3" />
+                <path d="M0 2H50" strokeWidth="3" />
               </svg>
             </div>
             <div className="next" onClick={() => nextProject()}>
@@ -770,7 +777,7 @@ export const Projects = () => {
                 viewBox="0 0 50 3"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 2H50" stroke-width="3" />
+                <path d="M0 2H50" strokeWidth="3" />
               </svg>
               <div className="nextArr">
                 <svg
@@ -791,7 +798,7 @@ export const Projects = () => {
               <div className="details__tags">
                 <div className="details__tags-tag">
                   {projectDetails?.tags.map((tag) => (
-                    <p>{tag}</p>
+                    <p key={tag}>{tag}</p>
                   ))}
                 </div>
                 <div className="details__github pmobile">
@@ -825,10 +832,13 @@ export const Projects = () => {
                 alt={projectDetails?.title}
                 id="mainpic"
               />
-              <p className="details__description">
+              <p className="details__description pdesktop">
                 ... {projectDetails?.description}
               </p>
             </div>
+            <p className="details__descriptionm pmobile">
+              ... {projectDetails?.description}
+            </p>
             <div className="details__github pdesktop">
               <a
                 href={`https://github.com/BlessTheBoy/${projectDetails?.gitRepo}`}>
@@ -886,7 +896,7 @@ export const Projects = () => {
                   cy="84.4702"
                   r="38.4702"
                   stroke="#555555"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
                 <circle
                   ref={liveCircle}
@@ -895,7 +905,7 @@ export const Projects = () => {
                   cy="84.4702"
                   r="37.4702"
                   stroke={projectTheme?.progessBar}
-                  stroke-width="4"
+                  strokeWidth="4"
                 />
                 <path
                   className="svgText"
