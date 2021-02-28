@@ -268,6 +268,7 @@ const StyledProjects = styled.div`
     align-items: center;
 
     &-tag {
+      flex: 1;
       display: flex;
 
       & p {
@@ -491,7 +492,7 @@ const StyledProjects = styled.div`
 
     .projects__details {
       width: 86%;
-      margin: 3rem auto;
+      margin: 2rem auto 3rem;
       filter: drop-shadow(-7px 8px 5px rgba(0, 0, 0, 0.25));
     }
 
@@ -502,7 +503,7 @@ const StyledProjects = styled.div`
 
     .details__tags {
       // flex: 1;
-      width: 100%;
+      width: 95%;
       justify-content: space-between;
 
       & p {
@@ -539,6 +540,10 @@ const StyledProjects = styled.div`
       bottom: 12%;
       right: 50%;
       transform: translate(50%, 50%);
+    }
+    .liveButton:hover {
+      transform-origin: 50% 50%;
+      transform: translate(50%, 50%) scale(1.1);
     }
     .projects__controls {
       bottom: 12%;
