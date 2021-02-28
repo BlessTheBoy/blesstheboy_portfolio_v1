@@ -104,7 +104,7 @@ export const LandingPage = () => {
       duration: 4.3,
       delay: 4,
     });
-  }, [hederRef, scrollMobileRef, scrollRef]);
+  }, []);
   return (
     <StyledHome id="home">
       <Header ref={hederRef} />
