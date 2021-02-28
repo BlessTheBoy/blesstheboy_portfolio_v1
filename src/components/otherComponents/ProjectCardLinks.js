@@ -32,6 +32,32 @@ const StyledProjectCardLinks = styled.div.attrs({ "data-id": "cardlinks" })`
   & a:hover svg {
     fill: white;
   }
+
+  @media only screen and (max-width: 750px) {
+    justify-content: flex-start;
+    padding: 0 1.5rem 0.2rem;
+
+    & a {
+      color: ${(props) => props.theme.accentColor};
+
+      & svg {
+        fill: ${(props) => props.theme.accentColor};
+      }
+    }
+
+    & a .projectCardLink_logo {
+      width: 17px;
+      margin-right: 4px;
+    }
+    & a .projectCardLink_sharelogo {
+      width: 10px;
+      margin-left: 2px;
+    }
+
+    & #livelink {
+      margin-right: 3rem;
+    }
+  }
 `;
 export const ProjectCardLinks = ({ liveLink, githubLink }) => {
   return (

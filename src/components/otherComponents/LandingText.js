@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { AnimatedTitle } from "./AnimatedTitle";
 import { HomeSocials } from "./HomeSocials";
 import { useEffect, useRef } from "react";
+import { AnimatedMobileTitle } from "./AnimatedMobileTitle";
 
 const StyledLandingText = styled.div`
   padding: 1rem;
@@ -44,7 +45,7 @@ const StyledLandingText = styled.div`
     mix-blend-mode: difference;
   }
 
-  img {
+  & > img {
     // position: absolute;
     margin-left: -40px;
     opacity: ${(props) => props.theme.tagOpacity};
@@ -70,6 +71,18 @@ const StyledLandingText = styled.div`
   @media only screen and (max-width: 700px){
     #tagbottom {
       margin-top: 1.5rem;
+    }
+  }
+  @media only screen and (max-width: 750px){
+    width: 100%;
+    p.landingText__intro {
+      font-size: 1rem;
+    }
+    p.landingText__description {
+      width: 100%;
+      font-size: .75rem;
+      text-align: justify;
+      padding: 0;
     }
   }
 `;
@@ -98,6 +111,7 @@ export const LandingText = () => {
       </p>
       {/* <h1>FRONTEND DEVELOPER</h1> */}
       <AnimatedTitle />
+      <AnimatedMobileTitle />
       <div ref={descriptionRef}>
         <p className="landingText__description">
           from Lagos, Nigeria. I love designing and building websites and
@@ -105,7 +119,7 @@ export const LandingText = () => {
           running or watching movies I like to spend time learning more
           especially about Programming & Software Development, Fitness, Design
           and Fashion. I have been working on a lot of projects and I’m ready
-          and currently looking Frontend Development oppurtunities.
+          and currently looking for Frontend Development oppurtunities.
         </p>
         <HomeSocials />
       </div>

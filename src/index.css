@@ -12,10 +12,15 @@ body {
 @media screen and (max-width: 750px) {
   body {
     overflow-y: scroll;
+    scroll-snap-type: y mandatory;
   }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+html {
+  scroll-snap-type: y proximity;
 }

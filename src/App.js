@@ -30,9 +30,11 @@ function App() {
               <Projects />
             </Route>
             <Route path="/">
-              <LandingPage />
-              <RecentProjects />
-              <ContactPage />
+              <div style={{ scrollSnapType: "y mandatory" }}>
+                <LandingPage />
+                <RecentProjects />
+                <ContactPage />
+              </div>
             </Route>
           </Switch>
         </Router>

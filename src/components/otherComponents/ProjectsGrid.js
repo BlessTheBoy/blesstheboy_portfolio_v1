@@ -15,6 +15,9 @@ const StyledProjectsGrid = styled.div.attrs({ "data-id": "projectsGrid" })`
 
   @media only screen and (max-width: 750px) {
     gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
   }
 `;
 export const ProjectsGrid = () => {
