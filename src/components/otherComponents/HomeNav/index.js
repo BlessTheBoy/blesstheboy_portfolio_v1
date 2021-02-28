@@ -32,6 +32,10 @@ const StyledHomeNav = styled.ul`
       font-size: 0.7rem;
     }
   }
+
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 `;
 
 export const HomeNav = () => {
