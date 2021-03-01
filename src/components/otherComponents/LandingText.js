@@ -6,8 +6,8 @@ import { useEffect, useRef } from "react";
 import { AnimatedMobileTitle } from "./AnimatedMobileTitle";
 
 const StyledLandingText = styled.div`
-  padding: 1rem;
-  padding-top: .5rem
+  padding: 0.5rem 1rem 2rem;
+  // padding-top: 0.5rem;
   width: fit-content;
   position: relative;
   z-index: 30;
@@ -26,7 +26,6 @@ const StyledLandingText = styled.div`
     background-color: ${(props) => props.theme.body};
     z-index: 100;
     transform-origin: 100% 0;
-
   }
 
   p.landingText__description {
@@ -60,27 +59,30 @@ const StyledLandingText = styled.div`
   #tagbottom {
     object-fit: contain;
     width: 50px;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
-  @media only screen and (max-width: 800px){
-    #tagbottom {
-      margin-top: 2rem;
-    }
-  }
-  @media only screen and (max-width: 700px){
+  @media only screen and (max-width: 800px) {
     #tagbottom {
       margin-top: 1.5rem;
     }
   }
-  @media only screen and (max-width: 750px){
+  @media only screen and (max-width: 700px) {
+    #tagbottom {
+      margin-top: 1rem;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    p.landingText__intro span {
+      background-color: ${(props) => props.theme.bodyMobile};
+    }
     width: 100%;
     p.landingText__intro {
       font-size: 1rem;
     }
     p.landingText__description {
       width: 100%;
-      font-size: .75rem;
+      font-size: 0.75rem;
       text-align: justify;
       padding: 0;
     }

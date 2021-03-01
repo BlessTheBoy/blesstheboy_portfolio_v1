@@ -97,7 +97,7 @@ const StyledHomeSocials = styled.div`
 export const HomeSocials = () => {
   return (
     <StyledHomeSocials>
-      <img src="images/blesstheboyimage.png" alt="" />
+      <img className="mobile" src="images/blesstheboyimage.png" alt="" />
       <ul>
         <li>
           <a href="#" target="_blank" rel="noopener noreferrer">

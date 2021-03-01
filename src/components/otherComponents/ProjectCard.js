@@ -32,42 +32,6 @@ const StyledProjectCard = styled.div`
     z-index: 1;
   }
 
-  &:hover {
-    &::after {
-      top: 0;
-      opacity: 0.9;
-    }
-
-    [data-id="cardlinks"] {
-      opacity: 1;
-
-      & a {
-        color: black;
-
-        & svg {
-          fill: black;
-        }
-
-        &:hover {
-          color: white;
-    
-          & svg {
-            fill: white;
-          }
-        }
-      }
-    }
-
-    & .projectCard_name {
-      color: #000;
-    }
-
-    & .projectCard_description {
-      color: #222;
-    }
-  }
-}
-
   & .projectCard_content {
     position: relative;
     padding: 2rem 2rem 1rem;
@@ -85,7 +49,7 @@ const StyledProjectCard = styled.div`
     font-size: 2.2em;
     font-weight: 400;
     font-family: "Bebas Neue", cursive;
-    margin-right: 1rem;    
+    margin-right: 1rem;
     transition: all 0.5s ease-in-out;
   }
   & .projectCard_tags {
@@ -104,11 +68,11 @@ const StyledProjectCard = styled.div`
     margin-bottom: 0.5em;
   }
   & .projectCard_description {
-    color: #ccc;    
+    color: #ccc;
     transition: all 0.5s ease-in-out;
-    font-size: .9em;
+    font-size: 0.9em;
   }
-  
+
   & img {
     object-fit: contain;
     width: 90%;
@@ -123,53 +87,58 @@ const StyledProjectCard = styled.div`
           `}
   }
 
-  @media only screen and (max-width: 900px){    
+  @media only screen and (max-width: 900px) {
     width: ${(props) => (props.size === "big" ? "300px" : "240px")};
     height: ${(props) => (props.size === "big" ? "300px" : "240px")};
   }
-  @media only screen and (max-width: 800px){    
+  @media only screen and (max-width: 800px) {
     width: ${(props) => (props.size === "big" ? "270px" : "240px")};
     height: ${(props) => (props.size === "big" ? "270px" : "240px")};
   }
-  @media only screen and (max-width: 750px){    
+  @media only screen and (max-width: 750px) {
+    &:after {
+      content: none;
+      all: none;
+    }
+
     width: 100%;
     max-width: 500px;
     height: fit-content;
     background: ${(props) => props.theme.projectCardBody};
-    font-size: .9em;
-    margin: 0 auto .35rem;
+    font-size: 0.9em;
+    margin: 0 auto 1rem;
 
     & .projectCard_content {
       padding: 1.2rem 1.5rem;
       padding-bottom: 0;
     }
 
-    .projectCard_header{
+    .projectCard_header {
       flex-direction: column-reverse;
       justify-content: flex-start;
       align-items: flex-start;
-      margin-bottom: .3em;
+      margin-bottom: 0.3em;
     }
-    .projectCard_name{
+    .projectCard_name {
       width: 100%;
       font-size: 2.5em;
       letter-spacing: 2px;
-      color:  ${(props) => props.theme.fontColor};
+      color: ${(props) => props.theme.fontColor};
     }
-    .projectCard_tags{
+    .projectCard_tags {
       width: 100%;
       max-width: 100%;
       justify-content: flex-start;
 
-      & figure {        
+      & figure {
         margin-left: 0em;
         margin-right: 0.5em;
       }
     }
 
     & .projectCard_description {
-      color:  ${(props) => props.theme.projectCardFont};
-      margin-bottom: .8rem;
+      color: ${(props) => props.theme.projectCardFont};
+      margin-bottom: 0.8rem;
     }
 
     [data-id="cardlinks"] {
@@ -178,20 +147,55 @@ const StyledProjectCard = styled.div`
       transition: all 0.5s ease-in-out;
     }
 
-    .projectCard_image{
+    .projectCard_image {
       display: none;
     }
   }
 
-  @media only screen and (min-width: 750px){
+  @media only screen and (min-width: 750px) {
     [data-id="cardlinks"] {
       position: absolute;
       top: 50%;
       right: 50%;
       transform: translate(50%, -50%);
       z-index: 3;
-      opacity: 0;    
+      opacity: 0;
       transition: all 0.5s ease-in-out;
+    }
+
+    &:hover {
+      &::after {
+        top: 0;
+        opacity: 0.9;
+      }
+
+      [data-id="cardlinks"] {
+        opacity: 1;
+
+        & a {
+          color: black;
+
+          & svg {
+            fill: black;
+          }
+
+          &:hover {
+            color: white;
+
+            & svg {
+              fill: white;
+            }
+          }
+        }
+      }
+
+      & .projectCard_name {
+        color: #000;
+      }
+
+      & .projectCard_description {
+        color: #222;
+      }
     }
   }
 `;

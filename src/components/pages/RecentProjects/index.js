@@ -11,97 +11,105 @@ const StyledRecentProjects = styled.section`
   color: ${(props) => props.theme.fontColor};
   width: 100%;
   height: 100vh;
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
   padding: 1.5rem 4rem 0.5rem;
   font-size: 1rem;
   scroll-snap-align: start;
 
-  & .recentProjects__container{
-    width: 100%
+  & .recentProjects__container {
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 
-  & .recentProjects__container h1{
+  & .recentProjects__container h1 {
     font-size: 3.5em;
     font-weight: 700;
-    font-family: 'Bebas Neue', cursive;
-    letter-spacing: .2em;
+    font-family: "Bebas Neue", cursive;
+    letter-spacing: 0.2em;
     color: ${(props) => props.theme.accentColor};
   }
 
-  .recentProjects__nav{    
+  .recentProjects__nav {
     position: absolute;
     top: 50%;
-    right: 0;      
+    right: 0;
   }
-  .recentProjects__nav .socials a svg{
+  .recentProjects__nav .socials a svg {
     fill: ${(props) => props.theme.fontColor};
   }
-  .recentProjects__nav .socials a:hover svg{
+  .recentProjects__nav .socials a:hover svg {
     fill: ${(props) => props.theme.accentColor};
   }
 
-  .socials{
+  .socials {
     display: flex;
     flex-direction: column;
     margin-top: 7.5em;
   }
 
-  .socials a{
+  .socials a {
     margin-top: 1.5em;
     margin-right: 1rem;
   }
 
-  .socials a svg{
+  .socials a svg {
     object-fit: contain;
     width: 25px;
   }
-  [data-id="nav"]{
+  [data-id="nav"] {
     position: absolute;
     top: 0;
-    right: 0;      
+    right: 0;
     transform: translate(0, -50%);
   }
 
-  .allProjects{    
+  .allProjects {
     font-family: "Bebas Neue", cursive;
     color: ${(props) => props.theme.accentColor};
-    font-size: 1.8em;    
+    font-size: 2em;
     text-decoration: underline;
   }
-  @media only screen and (max-width: 900px){
-    font-size: .8rem;
+  @media only screen and (max-width: 900px) {
+    font-size: 0.8rem;
   }
-  @media only screen and (max-width: 800px){
-    padding: 0rem 2.5rem 1.5rem;
-  }  
-  @media only screen and (max-width: 750px){
-    font-size: .7rem;
-    padding: 0rem 1rem 1.5rem;
+  @media only screen and (max-width: 800px) {
+    padding: 0.5rem 2.5rem 1.5rem;
+  }
+  @media only screen and (max-width: 750px) {
+    height: fit-content;
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem 1.5rem;
     background-color: ${(props) => props.theme.bodyMobile};
     color: ${(props) => props.theme.fontColor};
-    [data-id="logo"]{
+    [data-id="logo"] {
       display: none;
     }
-    .recentProjects__nav{
+    .recentProjects__nav {
       display: none;
     }
-    .recentProjects__container  h1{
+    .recentProjects__container h1 {
       font-size: 3em;
       margin-bottom: 1rem;
       color: ${(props) => props.theme.fontColor};
     }
-    .allProjects{
+    .allProjects {
       margin-top: 1.5rem;
+      font-size: 2.8em;
+    }
+    [data-id="projectsGrid"] {
+      flex: 1;
     }
   }
-  @media only screen and (max-width: 550px){
+  @media only screen and (max-width: 550px) {
     padding: 1.5rem 1.5rem;
   }
-  @media only screen and (min-width: 750px){
-    [data-id="projectsGrid"]{
+  @media only screen and (min-width: 750px) {
+    [data-id="projectsGrid"] {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -110,15 +118,17 @@ const StyledRecentProjects = styled.section`
       max-width: 800px;
       height: 90%;
     }
-    .allProjects{
+    .allProjects {
       position: absolute;
       bottom: 4rem;
       left: 20%;
     }
   }
-  
-  
-  
+  @media only screen and (orientation: landscape) {
+    // background-color: lightblue;
+    height: fit-content;
+    // overflow-y: auto;
+  }
 `;
 
 export const RecentProjects = () => {

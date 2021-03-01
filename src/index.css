@@ -12,9 +12,14 @@ body {
 @media screen and (max-width: 750px) {
   body {
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; */
   }
 }
+/* @media only screen and (orientation: landscape) {
+  body {
+    overflow-y: auto;
+  }
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

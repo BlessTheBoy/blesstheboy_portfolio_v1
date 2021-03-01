@@ -18,6 +18,7 @@ const StyledProjectsGrid = styled.div.attrs({ "data-id": "projectsGrid" })`
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
+    justify-content: space-between;
   }
 `;
 export const ProjectsGrid = () => {

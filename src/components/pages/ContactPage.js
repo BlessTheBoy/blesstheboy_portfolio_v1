@@ -37,6 +37,10 @@ const StyledContactPage = styled.section`
       margin: 0 auto;
   }
 
+  & .contactList li{
+    margin-bottom: .7rem;
+  }
+
   & .contactList li a {
       color: ${(props) => props.theme.fontColor};
       display: flex;

@@ -12,6 +12,7 @@ const StyledHome = styled.section`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.fontColor};
   height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -72,8 +73,9 @@ const StyledHome = styled.section`
       padding: 0rem 2.5rem 1.5rem;
     }
   }
-  @media only screen and (max-width: 750px){    
-  background-color: ${(props) => props.theme.bodyMobile};
+  @media only screen and (max-width: 750px){
+    height: fit-content;  
+    background-color: ${(props) => props.theme.bodyMobile};
     .landingContent {
       padding: 0rem 1rem 1.5rem;
     }
@@ -88,6 +90,11 @@ const StyledHome = styled.section`
     [data-id="asideImage"]{
       display: none;
     }
+  }
+  @media only screen and (orientation: landscape) {
+    height: fit-content;
+    min-height: 100vh;
+    // overflow-y: auto;
   }
 `;
 
