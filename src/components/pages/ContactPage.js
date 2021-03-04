@@ -13,112 +13,144 @@ const StyledContactPage = styled.section`
   padding: 1.5rem 4rem 0.5rem;
   font-size: 1rem;
   scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
 
-  & .contact__container{
-    width: 100%
+  & .contact__container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 
-  & .contact__container h1{
+  & .contact_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .contact__container h1 {
     font-size: 4rem;
     font-weight: 400;
     font-family: "Bebas Neue", cursive;
     color: ${(props) => props.theme.accentColor};
   }
 
-  & .contactList {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 60%;
-      gap: 2rem;
-      align-items: center;
-      justify-items: center;
-      margin: 0 auto;
+  & .resumeLink {
+    margin: 1rem auto 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: "Bebas Neue", cursive;
+    color: ${(props) => props.theme.accentColor};
+    text-decoration: underline;
   }
 
-  & .contactList li{
-    margin-bottom: .7rem;
+  & .contactList-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .contactList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    margin: 0 auto;
+  }
+
+  & .contactList li {
+    margin-bottom: 0.7rem;
   }
 
   & .contactList li a {
-      color: ${(props) => props.theme.fontColor};
-      display: flex;
-      align-items: center;
+    color: ${(props) => props.theme.fontColor};
+    display: flex;
+    align-items: center;
   }
   & .contactList li a:hover {
-      color: ${(props) => props.theme.accentColor};
+    color: ${(props) => props.theme.accentColor};
   }
-  & .contactList li a svg{
-      fill: ${(props) => props.theme.fontColor};
-      width: 30px;
-      margin-right: 1rem;
+  & .contactList li a svg {
+    fill: ${(props) => props.theme.fontColor};
+    width: 30px;
+    margin-right: 1rem;
   }
-  & .contactList li a:hover svg{
-      fill: ${(props) => props.theme.accentColor};
+  & .contactList li a:hover svg {
+    fill: ${(props) => props.theme.accentColor};
   }
-  [data-id="nav"]{
+  [data-id="nav"] {
     position: absolute;
     top: 50%;
-    right: 0;      
+    right: 0;
     transform: translate(0, -50%);
   }
-  & .footer{
-    opacity: .6;
+  & .footer {
+    opacity: 0.6;
     width: 100%;
-    max-width: 1400px;    
+    max-width: 1400px;
     padding: 1.5rem 4rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
-  & .contact__container .footer svg{   
-      object-fit: contain;    
-    width: 100px; 
+  & .contact__container .footer svg {
+    object-fit: contain;
+    width: 100px;
     fill: ${(props) => props.theme.fontColor};
 
-    &.logo2{
+    &.logo2 {
       width: 70px;
       margin-bottom: -5px;
     }
   }
-  & .contact__container .footer svg:hover{      
+  & .contact__container .footer svg:hover {
     fill: ${(props) => props.theme.accentColor};
   }
 
-  @media only screen and (max-width: 650px){
-    & .footer{
-      font-size: .7rem;
+  @media only screen and (max-width: 650px) {
+    & .footer {
+      font-size: 0.7rem;
 
-      svg{
+      svg {
         width: 75px;
 
-        &.logo2{
+        &.logo2 {
           width: 60px;
         }
       }
     }
-
   }
 
-  @media only screen and (max-width: 750px){
+  @media only screen and (max-width: 750px) {
     padding: 1.5rem 1.5rem 1rem;
 
-    .contact__container{
+    .contact__container {
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
 
-      .contact_content{
+      .contact_content {
         flex: 1;
         display: flex;
         flex-direction: column;
       }
     }
-    & .contactList{
+    & .resumeLink {
+      font-size: 1.2rem;
+    }
+
+    & .contactList {
       flex: 1;
       width: 100%;
       height: max-content;
@@ -130,50 +162,36 @@ const StyledContactPage = styled.section`
       flex-wrap: wrap;
       align-content: center;
       text-align: left;
-      font-size: .8rem;
+      font-size: 0.8rem;
       padding: 0 10%;
 
-      li a svg{
+      li a svg {
         width: 25px;
       }
     }
-    [data-id="logo"]{
+    [data-id="logo"] {
       display: none;
     }
-    [data-id="nav"]{
+    [data-id="nav"] {
       display: none;
     }
 
-    .footer{
+    .footer {
+      width: 100%;
       display: flex;
       flex-direction: column-reverse;
       align-items: flex-start;
       padding: 0;
 
-      .copy{
+      .copy {
         align-self: center;
-        font-size: .9rem;
-        margin-top: .8rem;
+        font-size: 0.9rem;
+        margin-top: 0.8rem;
       }
     }
 
-    .logo{
+    .logo {
       display: none;
-    }
-  }
-
-  @media only screen and (min-width: 750px){
-    & .contactList{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    & .footer{
-      position: absolute;
-      bottom: 0;
-      left: 0;
     }
   }
 `;
@@ -184,72 +202,77 @@ export const ContactPage = () => {
         <Logo className="desktop" />
         <div className="contact_content">
           <h1>contact / hire me</h1>
-          <ul className="contactList">
-            <li>
-              <a href="https://twitter.com/BlessTheBoy_">
-                <svg
-                  width="40"
-                  viewBox="0 0 40 34"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M40 4.5975C38.5125 5.25 36.9275 5.6825 35.275 5.8925C36.975 4.8775 38.2725 3.2825 38.8825 1.36C37.2975 2.305 35.5475 2.9725 33.6825 3.345C32.1775 1.7425 30.0325 0.75 27.6925 0.75C23.1525 0.75 19.4975 4.435 19.4975 8.9525C19.4975 9.6025 19.5525 10.2275 19.6875 10.8225C12.87 10.49 6.8375 7.2225 2.785 2.245C2.0775 3.4725 1.6625 4.8775 1.6625 6.39C1.6625 9.23 3.125 11.7475 5.305 13.205C3.9875 13.18 2.695 12.7975 1.6 12.195C1.6 12.22 1.6 12.2525 1.6 12.285C1.6 16.27 4.4425 19.58 8.17 20.3425C7.5025 20.525 6.775 20.6125 6.02 20.6125C5.495 20.6125 4.965 20.5825 4.4675 20.4725C5.53 23.72 8.545 26.1075 12.13 26.185C9.34 28.3675 5.7975 29.6825 1.9625 29.6825C1.29 29.6825 0.645 29.6525 0 29.57C3.6325 31.9125 7.9375 33.25 12.58 33.25C27.67 33.25 35.92 20.75 35.92 9.915C35.92 9.5525 35.9075 9.2025 35.89 8.855C37.5175 7.7 38.885 6.2575 40 4.5975Z" />
-                </svg>
-                <p>BlessTheBoy_</p>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:bakarefaruq.a@gmail.com">
-                <svg
-                  width="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0)">
-                    <path d="M26.515 20.2049L40 28.7299V11.3199L26.515 20.2049Z" />
-                    <path d="M0 11.3199V28.7299L13.485 20.2049L0 11.3199Z" />
-                    <path d="M37.5 6.25H2.49995C1.25245 6.25 0.262451 7.18 0.0749512 8.3775L20 21.505L39.925 8.3775C39.7375 7.18 38.7475 6.25 37.5 6.25Z" />
-                    <path d="M24.225 21.7151L20.6875 24.0451C20.4775 24.1826 20.24 24.2501 20 24.2501C19.76 24.2501 19.5225 24.1826 19.3125 24.0451L15.775 21.7126L0.0799561 31.6401C0.272456 32.8276 1.25746 33.7501 2.49996 33.7501H37.5C38.7425 33.7501 39.7275 32.8276 39.92 31.6401L24.225 21.7151Z" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0">
-                      <rect width="40" height="40" />
-                    </clipPath>
-                  </defs>
-                </svg>
+          <div className="contactList-container">
+            <ul className="contactList">
+              <li>
+                <a href="https://twitter.com/BlessTheBoy_">
+                  <svg
+                    width="40"
+                    viewBox="0 0 40 34"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 4.5975C38.5125 5.25 36.9275 5.6825 35.275 5.8925C36.975 4.8775 38.2725 3.2825 38.8825 1.36C37.2975 2.305 35.5475 2.9725 33.6825 3.345C32.1775 1.7425 30.0325 0.75 27.6925 0.75C23.1525 0.75 19.4975 4.435 19.4975 8.9525C19.4975 9.6025 19.5525 10.2275 19.6875 10.8225C12.87 10.49 6.8375 7.2225 2.785 2.245C2.0775 3.4725 1.6625 4.8775 1.6625 6.39C1.6625 9.23 3.125 11.7475 5.305 13.205C3.9875 13.18 2.695 12.7975 1.6 12.195C1.6 12.22 1.6 12.2525 1.6 12.285C1.6 16.27 4.4425 19.58 8.17 20.3425C7.5025 20.525 6.775 20.6125 6.02 20.6125C5.495 20.6125 4.965 20.5825 4.4675 20.4725C5.53 23.72 8.545 26.1075 12.13 26.185C9.34 28.3675 5.7975 29.6825 1.9625 29.6825C1.29 29.6825 0.645 29.6525 0 29.57C3.6325 31.9125 7.9375 33.25 12.58 33.25C27.67 33.25 35.92 20.75 35.92 9.915C35.92 9.5525 35.9075 9.2025 35.89 8.855C37.5175 7.7 38.885 6.2575 40 4.5975Z" />
+                  </svg>
+                  <p>BlessTheBoy_</p>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:bakarefaruq.a@gmail.com">
+                  <svg
+                    width="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0)">
+                      <path d="M26.515 20.2049L40 28.7299V11.3199L26.515 20.2049Z" />
+                      <path d="M0 11.3199V28.7299L13.485 20.2049L0 11.3199Z" />
+                      <path d="M37.5 6.25H2.49995C1.25245 6.25 0.262451 7.18 0.0749512 8.3775L20 21.505L39.925 8.3775C39.7375 7.18 38.7475 6.25 37.5 6.25Z" />
+                      <path d="M24.225 21.7151L20.6875 24.0451C20.4775 24.1826 20.24 24.2501 20 24.2501C19.76 24.2501 19.5225 24.1826 19.3125 24.0451L15.775 21.7126L0.0799561 31.6401C0.272456 32.8276 1.25746 33.7501 2.49996 33.7501H37.5C38.7425 33.7501 39.7275 32.8276 39.92 31.6401L24.225 21.7151Z" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0">
+                        <rect width="40" height="40" />
+                      </clipPath>
+                    </defs>
+                  </svg>
 
-                <p>bakarefaruq.a@gmail.com</p>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/BlessTheBoy/">
-                <svg
-                  width="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.9975 0C8.955 0 0 9.18112 0 20.5069C0 29.5655 5.73 37.2504 13.68 39.9644C14.68 40.1534 15.045 39.5202 15.045 38.9764C15.045 38.4887 15.0275 37.1994 15.0175 35.4888C9.455 36.727 8.28 32.739 8.28 32.739C7.3725 30.3697 6.06 29.7391 6.06 29.7391C4.2425 28.4676 6.195 28.4931 6.195 28.4931C8.2025 28.6387 9.2575 30.6071 9.2575 30.6071C11.0425 33.7399 13.94 32.836 15.08 32.3101C15.26 30.985 15.7775 30.0812 16.35 29.568C11.91 29.0497 7.24 27.2906 7.24 19.4346C7.24 17.1955 8.02 15.3649 9.3 13.93C9.0925 13.4117 8.4075 11.3258 9.495 8.50454C9.495 8.50454 11.175 7.95306 14.995 10.6058C16.59 10.1513 18.3 9.92409 20.0025 9.91643C21.7 9.92664 23.4125 10.1513 25.01 10.6083C28.8275 7.95561 30.505 8.50709 30.505 8.50709C31.595 11.3309 30.91 13.4142 30.705 13.9325C31.9875 15.3674 32.76 17.198 32.76 19.4371C32.76 27.3136 28.085 29.0472 23.63 29.5552C24.3475 30.1884 24.9875 31.4395 24.9875 33.3518C24.9875 36.0939 24.9625 38.3049 24.9625 38.9764C24.9625 39.5253 25.3225 40.1636 26.3375 39.9619C34.275 37.2453 40 29.5629 40 20.5069C40 9.18112 31.045 0 19.9975 0Z" />
-                </svg>
-                <p>BlessTheBoy</p>
-              </a>
-            </li>
-            <li>
-              <a href="https://wa.me/2348056954479">
-                <svg
-                  width="40"
-                  viewBox="0 0 40 41"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M34.1721 5.84094C30.4119 2.07634 25.4111 0.00220783 20.0837 0C9.10583 0 0.171475 8.93411 0.167059 19.9149C0.165587 23.4251 1.08257 26.8516 2.82553 29.8719L0 40.1923L10.5581 37.4227C13.4673 39.0097 16.7425 39.8459 20.0756 39.8469H20.0839C31.0605 39.8469 39.9958 30.9121 40 19.9308C40.0022 14.609 37.9325 9.60529 34.1721 5.84094ZM20.0837 36.4834H20.0768C17.1065 36.4822 14.1934 35.6839 11.6515 34.176L11.0472 33.8171L4.78192 35.4607L6.45422 29.3521L6.06049 28.7258C4.4034 26.0902 3.52836 23.0439 3.52983 19.9161C3.53326 10.7892 10.9594 3.36375 20.0903 3.36375C24.5118 3.36522 28.6682 5.08929 31.7935 8.21828C34.9188 11.3473 36.6389 15.5063 36.6375 19.9296C36.6335 29.0573 29.2079 36.4834 20.0837 36.4834ZM29.1637 24.0855C28.6662 23.8362 26.2195 22.6327 25.7632 22.4664C25.3074 22.3003 24.9752 22.2176 24.6438 22.7156C24.3119 23.2136 23.3584 24.3347 23.0679 24.6666C22.7775 24.9988 22.4875 25.0405 21.9897 24.7912C21.492 24.5422 19.8886 24.0165 17.9877 22.3212C16.5084 21.0016 15.5098 19.372 15.2193 18.874C14.9293 18.3755 15.2169 18.1322 15.4376 17.8584C15.9764 17.1894 16.5158 16.4881 16.6816 16.1562C16.8477 15.824 16.7645 15.5333 16.6399 15.2843C16.5158 15.0353 15.5206 12.5859 15.106 11.5891C14.7017 10.6192 14.2918 10.7502 13.9861 10.735C13.6962 10.7205 13.3642 10.7175 13.0323 10.7175C12.7007 10.7175 12.1615 10.8419 11.7052 11.3404C11.2491 11.8386 9.96369 13.0424 9.96369 15.4919C9.96369 17.9413 11.7469 20.3076 11.9956 20.6398C12.2444 20.9719 15.5049 25.9984 20.4968 28.1538C21.6841 28.667 22.6109 28.9729 23.3338 29.2022C24.5261 29.581 25.6106 29.5275 26.4682 29.3995C27.4244 29.2565 29.4122 28.1955 29.8273 27.0332C30.2419 25.8706 30.2419 24.8744 30.1173 24.6666C29.9931 24.4591 29.6612 24.3347 29.1637 24.0855Z"
-                  />
-                </svg>
+                  <p>bakarefaruq.a@gmail.com</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/BlessTheBoy/">
+                  <svg
+                    width="40"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.9975 0C8.955 0 0 9.18112 0 20.5069C0 29.5655 5.73 37.2504 13.68 39.9644C14.68 40.1534 15.045 39.5202 15.045 38.9764C15.045 38.4887 15.0275 37.1994 15.0175 35.4888C9.455 36.727 8.28 32.739 8.28 32.739C7.3725 30.3697 6.06 29.7391 6.06 29.7391C4.2425 28.4676 6.195 28.4931 6.195 28.4931C8.2025 28.6387 9.2575 30.6071 9.2575 30.6071C11.0425 33.7399 13.94 32.836 15.08 32.3101C15.26 30.985 15.7775 30.0812 16.35 29.568C11.91 29.0497 7.24 27.2906 7.24 19.4346C7.24 17.1955 8.02 15.3649 9.3 13.93C9.0925 13.4117 8.4075 11.3258 9.495 8.50454C9.495 8.50454 11.175 7.95306 14.995 10.6058C16.59 10.1513 18.3 9.92409 20.0025 9.91643C21.7 9.92664 23.4125 10.1513 25.01 10.6083C28.8275 7.95561 30.505 8.50709 30.505 8.50709C31.595 11.3309 30.91 13.4142 30.705 13.9325C31.9875 15.3674 32.76 17.198 32.76 19.4371C32.76 27.3136 28.085 29.0472 23.63 29.5552C24.3475 30.1884 24.9875 31.4395 24.9875 33.3518C24.9875 36.0939 24.9625 38.3049 24.9625 38.9764C24.9625 39.5253 25.3225 40.1636 26.3375 39.9619C34.275 37.2453 40 29.5629 40 20.5069C40 9.18112 31.045 0 19.9975 0Z" />
+                  </svg>
+                  <p>BlessTheBoy</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/2348056954479">
+                  <svg
+                    width="40"
+                    viewBox="0 0 40 41"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M34.1721 5.84094C30.4119 2.07634 25.4111 0.00220783 20.0837 0C9.10583 0 0.171475 8.93411 0.167059 19.9149C0.165587 23.4251 1.08257 26.8516 2.82553 29.8719L0 40.1923L10.5581 37.4227C13.4673 39.0097 16.7425 39.8459 20.0756 39.8469H20.0839C31.0605 39.8469 39.9958 30.9121 40 19.9308C40.0022 14.609 37.9325 9.60529 34.1721 5.84094ZM20.0837 36.4834H20.0768C17.1065 36.4822 14.1934 35.6839 11.6515 34.176L11.0472 33.8171L4.78192 35.4607L6.45422 29.3521L6.06049 28.7258C4.4034 26.0902 3.52836 23.0439 3.52983 19.9161C3.53326 10.7892 10.9594 3.36375 20.0903 3.36375C24.5118 3.36522 28.6682 5.08929 31.7935 8.21828C34.9188 11.3473 36.6389 15.5063 36.6375 19.9296C36.6335 29.0573 29.2079 36.4834 20.0837 36.4834ZM29.1637 24.0855C28.6662 23.8362 26.2195 22.6327 25.7632 22.4664C25.3074 22.3003 24.9752 22.2176 24.6438 22.7156C24.3119 23.2136 23.3584 24.3347 23.0679 24.6666C22.7775 24.9988 22.4875 25.0405 21.9897 24.7912C21.492 24.5422 19.8886 24.0165 17.9877 22.3212C16.5084 21.0016 15.5098 19.372 15.2193 18.874C14.9293 18.3755 15.2169 18.1322 15.4376 17.8584C15.9764 17.1894 16.5158 16.4881 16.6816 16.1562C16.8477 15.824 16.7645 15.5333 16.6399 15.2843C16.5158 15.0353 15.5206 12.5859 15.106 11.5891C14.7017 10.6192 14.2918 10.7502 13.9861 10.735C13.6962 10.7205 13.3642 10.7175 13.0323 10.7175C12.7007 10.7175 12.1615 10.8419 11.7052 11.3404C11.2491 11.8386 9.96369 13.0424 9.96369 15.4919C9.96369 17.9413 11.7469 20.3076 11.9956 20.6398C12.2444 20.9719 15.5049 25.9984 20.4968 28.1538C21.6841 28.667 22.6109 28.9729 23.3338 29.2022C24.5261 29.581 25.6106 29.5275 26.4682 29.3995C27.4244 29.2565 29.4122 28.1955 29.8273 27.0332C30.2419 25.8706 30.2419 24.8744 30.1173 24.6666C29.9931 24.4591 29.6612 24.3347 29.1637 24.0855Z"
+                    />
+                  </svg>
 
-                <p>+234 8056 954 479</p>
-              </a>
-            </li>
-          </ul>
+                  <p>+234 8056 954 479</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <a className="resumeLink" href="bakare-faruq-resume.pdf" download>
+            Click to download my resume
+          </a>
         </div>
         <Nav active="contact" />
         <div className="footer">
