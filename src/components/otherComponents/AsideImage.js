@@ -42,7 +42,7 @@ const StyledAsideImage = styled.div.attrs({ "data-id": "asideImage" })`
   z-index: 20;
 
   & #sun-wrap {
-    position: relative
+    position: relative;
     object-fit: contain;
     width: 100%;
     z-index: 3;

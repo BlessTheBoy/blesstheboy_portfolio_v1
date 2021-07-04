@@ -4,6 +4,7 @@ import { AnimatedTitle } from "./AnimatedTitle";
 import { HomeSocials } from "./HomeSocials";
 import { useEffect, useRef } from "react";
 import { AnimatedMobileTitle } from "./AnimatedMobileTitle";
+import { Link } from "react-scroll";
 
 const StyledLandingText = styled.div`
   padding: 0.5rem 1rem 2rem;
@@ -33,6 +34,21 @@ const StyledLandingText = styled.div`
     width: 60%;
     padding-left: 5px;
     color: ${(props) => props.theme.secFontColor};
+  }
+
+  #newsletter {
+    padding: 0.4em 1.7em;
+    border-radius: 0.8em;
+    background-color: ${(props) => props.theme.accentColor};
+    color: ${(props) => props.theme.body};
+    font-weight: 600;
+    transition: all ease-in-out 200ms;
+    width: fit-content;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(85%);
+    }
   }
 
   h1 {
@@ -124,6 +140,9 @@ export const LandingText = () => {
           and currently looking for Frontend Development oppurtunities.
         </p>
         <HomeSocials />
+        <Link to="contacts" spy={true} smooth={true}>
+          <p id="newsletter">Subscribe to my newsletter</p>
+        </Link>
       </div>
       <img
         src="images/tagbottom.png"

@@ -5,6 +5,7 @@ import styled from "styled-components";
 const StyledHomeNav = styled.ul`
   display: flex;
   list-style: none;
+  align-items: center;
 
   li {
     margin-left: 2rem;
@@ -25,6 +26,19 @@ const StyledHomeNav = styled.ul`
   li.active a {
     color: ${(props) => props.theme.accentColor};
     font-weight: 700;
+  }
+
+  #newsletter {
+    padding: 0.4em 1.7em;
+    border-radius: 0.8em;
+    background-color: ${(props) => props.theme.accentColor};
+    color: ${(props) => props.theme.body};
+    font-weight: 600;
+    transition: all ease-in-out 200ms;
+
+    &:hover {
+      filter: brightness(85%);
+    }
   }
 
   @media only screen and (max-width: 840px) {
@@ -54,6 +68,11 @@ export const HomeNav = () => {
       <li>
         <Link to="contacts" spy={true} smooth={true}>
           <p>Contact</p>
+        </Link>
+      </li>
+      <li>
+        <Link to="contacts" spy={true} smooth={true}>
+          <p id="newsletter">Newsletter</p>
         </Link>
       </li>
     </StyledHomeNav>
