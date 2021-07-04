@@ -8,7 +8,7 @@ const StyledContactPage = styled.section`
   background-color: ${(props) => props.theme.contactBody};
   color: ${(props) => props.theme.fontColor};
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
   padding: 1.5rem 4rem 0.5rem;
