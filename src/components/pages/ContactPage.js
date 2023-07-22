@@ -289,8 +289,13 @@ export const ContactPage = () => {
             </ul>
           </div>
           <div className="newsFormWrap">
-            <a className="resumeLink" href="bakare-faruq-resume.pdf" download>
-              Click to download my resume
+            <a
+              className="resumeLink"
+              href="https://docs.google.com/document/d/1WTIATBKtf0bJW7lrVeeh5bOLVeYhqcsKpcFGfwjJFaE/edit?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Click to see my resume
             </a>
             <NewsletterForm />
           </div>
